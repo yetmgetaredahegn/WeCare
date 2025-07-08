@@ -1,7 +1,10 @@
 from urllib import request
+from django.db import router
 from django.urls import path
 from users import views
+from rest_framework_nested import routers
 
-urlpatterns = [
-    path('hello/', views.say_hello)
-]
+router = routers.DefaultRouter()
+router.register('patients', views.PatientProfileViewSet)
+
+urlpatterns = router.urls
