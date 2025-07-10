@@ -5,6 +5,7 @@ from users import views
 from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
-router.register('patients', views.PatientProfileViewSet)
+router.register('patient', views.PatientProfileViewSet)
+router.register('doctors',views.DoctorProfileViewSet)
 
 urlpatterns = router.urls

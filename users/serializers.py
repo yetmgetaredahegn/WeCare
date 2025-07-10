@@ -5,29 +5,47 @@ from rest_framework import serializers,permissions
 from django.contrib.auth import get_user_model
 
 
-from users.models import PatientProfile
+from users.models import DoctorProfile, PatientProfile
 
 User = get_user_model()
 
 class UserCreatePasswordRetypeSerializer(BaseUserCreateSerializer):
-    re_password = serializers.CharField(write_only=True)  
-
     class Meta(BaseUserCreateSerializer.Meta):
         model = User
-        fields = ['id','first_name','last_name','username','password','re_password','is_doctor','is_patient']
+        fields = ('first_name','last_name') + BaseUserCreateSerializer.Meta.fields + ('is_doctor', 'is_patient')
 
     def validate(self, attrs):
-        is_doctor = attrs.get('is_doctor',False)
-        is_patient = attrs.get('is_patient',False)
+        is_doctor = attrs.get('is_doctor', False)
+        is_patient = attrs.get('is_patient', False)
 
         if is_doctor and is_patient:
-            raise ValidationError("User can't be both doctor and pateint at the same time")
+            raise ValidationError("User can't be both doctor and patient at the same time")
         elif not is_doctor and not is_patient:
-            raise ValidationError("User should be either patient or doctor")
-        return attrs
+            raise ValidationError("User must be either a doctor or a patient")
+        return super().validate(attrs)
+
+    def create(self, validated_data):
+        user = super().create(validated_data)
+
+        if user.is_patient:
+            PatientProfile.objects.create(user=user)
+
+        if user.is_doctor:
+            DoctorProfile.objects.create(user=user)
+
+        return user
+        
+
     
 class PatientProfileSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(read_only=True)
     class Meta:
         model = PatientProfile
         fields = ['id','user_id','age','gender','phone']
+
+
+class DoctorProfileSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = DoctorProfile
+        fields = ['id','user_id','specialization','bio','available_days']
