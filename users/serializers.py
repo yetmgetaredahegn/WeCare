@@ -5,7 +5,7 @@ from rest_framework import serializers,permissions
 from django.contrib.auth import get_user_model
 
 
-from users.models import DoctorProfile, PatientProfile
+from users.models import DoctorProfile, PatientProfile,Day
 
 User = get_user_model()
 
@@ -35,6 +35,11 @@ class UserCreatePasswordRetypeSerializer(BaseUserCreateSerializer):
 
         return user
         
+class DaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Day
+        fields = ['id', 'name']
+
 
     
 class PatientProfileSerializer(serializers.ModelSerializer):
@@ -46,6 +51,11 @@ class PatientProfileSerializer(serializers.ModelSerializer):
 
 class DoctorProfileSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(read_only=True)
+    available_days = serializers.SlugRelatedField(
+        slug_field = 'name',
+        queryset = Day.objects.all(),
+        many = True
+        )
     class Meta:
         model = DoctorProfile
         fields = ['id','user_id','specialization','bio','available_days']
