@@ -50,12 +50,16 @@ class PatientProfileSerializer(serializers.ModelSerializer):
 
 
 class DoctorProfileSerializer(serializers.ModelSerializer):
-    user_id = serializers.IntegerField(read_only=True)
+    user = serializers.SerializerMethodField()
     available_days = serializers.SlugRelatedField(
         slug_field = 'name',
         queryset = Day.objects.all(),
         many = True
         )
+    
     class Meta:
         model = DoctorProfile
-        fields = ['id','user_id','specialization','bio','available_days']
+        fields = ['id','user','specialization','bio','available_days']
+    
+    def get_user(self, obj):
+        return f"Dr {obj.user.first_name}"

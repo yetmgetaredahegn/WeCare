@@ -12,4 +12,4 @@ class Appointment(models.Model):
        ('C', 'Confirmed'),
        ('X','Cancelled')
     ]
-    status = models.CharField(max_length=1, choices=STATUS)
+    status = models.CharField(max_length=1, choices=STATUS, default='P')
