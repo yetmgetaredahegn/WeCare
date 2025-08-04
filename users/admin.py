@@ -8,11 +8,18 @@ from users.models import CustomUser, DoctorProfile, PatientProfile
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ['id','first_name','last_name','username','email','is_doctor','is_patient']
 
-# @admin.register(DoctorProfile)
-# class DoctorProfileAdmin(admin.ModelAdmin):
-#     list_display = ['id','user_id','specialization','bio','available_days']
 
 @admin.register(PatientProfile)
 class PatientProfileAdmin(admin.ModelAdmin):
     list_display =  ['id','user_id','age','gender','phone']
+
+@admin.register(DoctorProfile)
+class DoctorProfileAdmin(admin.ModelAdmin):
+    list_display = ['id','user_id','specialization','bio','available_days']
+
+    def available_days(self, obj):
+        return ", ".join(day.name for day in obj.available_days.all())
+    
+    # get_available_days.short_description = 'Available Days'
+
 

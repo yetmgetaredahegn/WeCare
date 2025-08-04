@@ -59,7 +59,7 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = DoctorProfile
-        fields = ['id','user','specialization','bio','available_days']
+        fields = ['id','user','user_id','specialization','bio','available_days']
     
     def get_user(self, obj):
         return f"Dr {obj.user.first_name}"

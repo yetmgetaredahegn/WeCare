@@ -1,3 +1,4 @@
+from multiprocessing import AuthenticationError
 from django.forms import ValidationError
 from rest_framework import serializers
 
@@ -31,3 +32,21 @@ class AppointmentSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = ['id','patient_id','doctor_id','schedule_date','schedule_time','status']
 
+
+class UpdateAppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Appointment
+        fields=['status']
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+
+        if user.is_patient:
+            raise ValidationError('Patients cannot update status')
+        return attrs
+    
+    
+    def create(self, validated_data):
+        appointment_status = Appointment.objects.update('status',self.context['request'].data)
+        appointment = Appointment.objects.create(status=appointment_status,**validated_data)
+        return appointment

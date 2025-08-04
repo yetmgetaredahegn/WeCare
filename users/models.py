@@ -3,6 +3,7 @@ from django.db import models
 from config import settings
 
 class CustomUser(AbstractUser):
+    date_joined = models.DateTimeField(auto_now_add=True)
     is_patient = models.BooleanField(default=False)
     is_doctor = models.BooleanField(default=False)
 

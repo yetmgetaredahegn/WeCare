@@ -43,7 +43,10 @@ class DoctorProfileViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
     filter_backends = [DjangoFilterBackend]
     filterset_class = AvailableDoctors
-    
+    # def get_permissions(self):
+    #     if self.request.method == 'DELETE':
+    #         return IsAdminUser
+    #     return IsAuthenticated
 
     @action(detail=False, methods=['GET','PUT'], permission_classes=[IsDoctorPermission])
     def profile(self,request):

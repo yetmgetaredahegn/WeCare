@@ -84,9 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wecare',
-        'HOST': 'localhost',
+        'HOST': 'localhost',  # Windows IP from the step above
         'USER': 'root',
-        'PASSWORD': 'deAlto#Crack357'
+        'PASSWORD': 'deAlto#Crack357',
+        'PORT': '3306',
     }
 }
 

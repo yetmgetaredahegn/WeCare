@@ -9,12 +9,13 @@ mysqlclient = "*"
 django-debug-toolbar = "*"
 djangorestframework = "*"
 djoser = "*"
-djangorestframework-simplejwt = "*"
+djangorestframework-simplejwt = ">=5.5.1"
 django-filter = "*"
 drf-nested-routers = "*"
+pyjwt = ">=2.10.1"
 
 [dev-packages]
 
 [requires]
 python_version = "3.11"
-python_full_version = "3.11.9"
+python_full_version = "3.11.13"
