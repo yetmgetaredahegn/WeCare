@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'djoser',
     'users',
     'scheduling',
+    'clinical',
 ]
 
 MIDDLEWARE = [

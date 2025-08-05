@@ -1,4 +1,3 @@
-from pyexpat import model
 import django_filters 
 
 from scheduling.models import Appointment

@@ -1,11 +1,5 @@
-from logging import raiseExceptions
-from multiprocessing import context
-from urllib import request
-from django.shortcuts import render
-from requests import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 
 from scheduling.filters import AppointmentFilter
