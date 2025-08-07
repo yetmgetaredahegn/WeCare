@@ -7,10 +7,13 @@ class Diagnosis(models.Model):
     code = models.CharField(max_length=255)
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 class MedicalRecord(models.Model):
     patient = models.ForeignKey(PatientProfile,on_delete=models.SET_NULL, null=True)
     doctor = models.ForeignKey(DoctorProfile,on_delete=models.SET_NULL, null=True)
-    diagnosis = models.ForeignKey(Diagnosis, on_delete=models.CASCADE)
+    diagnosis = models.ForeignKey(Diagnosis, on_delete=models.CASCADE, related_name='records')
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Prescription(models.Model):
