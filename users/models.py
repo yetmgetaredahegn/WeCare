@@ -29,3 +29,8 @@ class PatientProfile(models.Model):
     gender = models.CharField(max_length=255)
     phone = models.CharField(max_length=15)
 
+    def __str__(self):
+        return self.user.get_full_name()
+
+
+

@@ -10,11 +10,6 @@ class DiagnosisSerializer(serializers.ModelSerializer):
 
 
 class MedicalRecordsSerializer(serializers.ModelSerializer):
-    # diagnosis_field = serializers.PrimaryKeyRelatedField(
-    #     queryset=Diagnosis.objects.all(),
-    #     many=True,
-    #     source='diagnosis'  # assumes MedicalRecord has a M2M or FK to Diagnosis called 'diagnosis'
-    # )
     diagnosis = DiagnosisSerializer()
 
     class Meta:
