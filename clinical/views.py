@@ -3,8 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.mixins import CreateModelMixin,RetrieveModelMixin,ListModelMixin
 from rest_framework.viewsets import GenericViewSet
 
-from clinical.models import Diagnosis, MedicalRecord
-from clinical.serializers import CreateMedicalRecordsSerializer, DiagnosisSerializer, MedicalRecordsSerializer
+from clinical.models import Diagnosis, Prescription, MedicalRecord
+from clinical.serializers import CreateMedicalRecordsSerializer, DiagnosisSerializer, MedicalRecordsSerializer, PrescriptionSerializer
 from users.permissions import IsDoctorPermission
 # Create your views here.
 
@@ -14,7 +14,7 @@ class DiagnosesViewSet(CreateModelMixin,RetrieveModelMixin, ListModelMixin,Gener
     permission_classes = [IsDoctorPermission]
     
 
-class MedicalRecords(CreateModelMixin,ListModelMixin,RetrieveModelMixin,GenericViewSet):
+class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,GenericViewSet):
     # queryset = MedicalRecord.objects.all()
     def get_queryset(self):
         user = self.request.user
@@ -33,3 +33,9 @@ class MedicalRecords(CreateModelMixin,ListModelMixin,RetrieveModelMixin,GenericV
         else:
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
+    
+
+class PrescriptionViewSet(CreateModelMixin,ListModelMixin,GenericViewSet):
+    queryset = Prescription.objects.all()
+    serializer_class = PrescriptionSerializer
+    # permission_classes = [IsDoctorPermission]

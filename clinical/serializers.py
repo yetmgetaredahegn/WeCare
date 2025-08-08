@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from clinical.models import Diagnosis, MedicalRecord
+from clinical.models import Diagnosis, MedicalRecord, Prescription
 
 
 class DiagnosisSerializer(serializers.ModelSerializer):
@@ -20,4 +20,9 @@ class CreateMedicalRecordsSerializer(serializers.ModelSerializer):
     class Meta:
         model= MedicalRecord
         fields = ['patient','diagnosis']
+
+class PrescriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prescription
+        fields = ['id','medical_record','medication_name','dosage','duration']
 
