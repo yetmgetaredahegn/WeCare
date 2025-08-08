@@ -1,3 +1,4 @@
+from datetime import date
 from multiprocessing import AuthenticationError
 from django.forms import ValidationError
 from rest_framework import serializers
@@ -17,6 +18,18 @@ class CreateAppointmentSerializer(serializers.ModelSerializer):
 
         if user.is_doctor:
             raise ValidationError('Doctors cannot book an appointment')
+        
+        if attrs['schedule_date'] < date.today():
+            raise ValidationError('You cannot book an appointment in the past.')
+        
+        if Appointment.objects.filter(
+            doctor_id = attrs['doctor_id'],
+            schedule_date = attrs['schedule_date'],
+            schedule_time = attrs['schedule_time'],
+            status__in = ['P','C']
+        ).exists():
+            raise ValidationError('This slot is booked for doctor')
+        
         return attrs
     
     def create(self, validated_data):
@@ -40,13 +53,18 @@ class UpdateAppointmentSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         user = self.context['request'].user
+        new_status = attrs.get('status')
 
-        if user.is_patient:
-            raise ValidationError('Patients cannot update status')
+        if user.is_patient and new_status != 'X':
+            raise ValidationError('Patients can only cancel thier appointments')
+        
+        if user.is_doctor and new_status not in ['C','X']:
+            raise ValidationError('Doctors can only confirm or cancel appointments')
+
         return attrs
     
     
-    def create(self, validated_data):
-        appointment_status = Appointment.objects.update('status',self.context['request'].data)
-        appointment = Appointment.objects.create(status=appointment_status,**validated_data)
-        return appointment
+    def update(self, instance, validated_data):
+        instance.status = validated_data['status']
+        instance.save()
+        return instance

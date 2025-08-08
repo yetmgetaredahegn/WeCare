@@ -27,7 +27,7 @@ class AppointmentViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return CreateAppointmentSerializer
-        elif self.request.method == 'PUT':
+        elif self.request.method in ['PATCH','PUT']:
             return UpdateAppointmentSerializer
         return AppointmentSerializer
  
