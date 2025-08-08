@@ -38,4 +38,4 @@ class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,Ge
 class PrescriptionViewSet(CreateModelMixin,ListModelMixin,GenericViewSet):
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer
-    # permission_classes = [IsDoctorPermission]
+    permission_classes = [IsDoctorPermission]
