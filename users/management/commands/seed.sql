@@ -8,65 +8,59 @@ INSERT INTO users_day (id, name) VALUES
 
 -- USERS (skip id=1 admin)
 -- CUSTOM USERS (Doctors id 2-25)
-INSERT INTO users_customuser 
-(id, username, email, password, first_name, last_name, is_patient, is_doctor, is_active, is_staff, is_superuser, date_joined)
-VALUES
-(2, 'doc2', 'doc2@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'John', 'Doe', 0, 1, 1, 0, 0, NOW()),
-(3, 'doc3', 'doc3@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Emily', 'Smith', 0, 1, 1, 0, 0, NOW()),
-(4, 'doc4', 'doc4@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'David', 'Johnson', 0, 1, 1, 0, 0, NOW()),
-(5, 'doc5', 'doc5@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sophia', 'Brown', 0, 1, 1, 0, 0, NOW()),
-(6, 'doc6', 'doc6@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Michael', 'Williams', 0, 1, 1, 0, 0, NOW()),
-(7, 'doc7', 'doc7@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Olivia', 'Jones', 0, 1, 1, 0, 0, NOW()),
-(8, 'doc8', 'doc8@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'James', 'Garcia', 0, 1, 1, 0, 0, NOW()),
-(9, 'doc9', 'doc9@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ava', 'Martinez', 0, 1, 1, 0, 0, NOW()),
-(10, 'doc10', 'doc10@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Daniel', 'Rodriguez', 0, 1, 1, 0, 0, NOW()),
-(11, 'doc11', 'doc11@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Isabella', 'Hernandez', 0, 1, 1, 0, 0, NOW()),
-(12, 'doc12', 'doc12@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Henry', 'Lopez', 0, 1, 1, 0, 0, NOW()),
-(13, 'doc13', 'doc13@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Amelia', 'Gonzalez', 0, 1, 1, 0, 0, NOW()),
-(14, 'doc14', 'doc14@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Matthew', 'Wilson', 0, 1, 1, 0, 0, NOW()),
-(15, 'doc15', 'doc15@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Mia', 'Anderson', 0, 1, 1, 0, 0, NOW()),
-(16, 'doc16', 'doc16@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ethan', 'Thomas', 0, 1, 1, 0, 0, NOW()),
-(17, 'doc17', 'doc17@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Charlotte', 'Taylor', 0, 1, 1, 0, 0, NOW()),
-(18, 'doc18', 'doc18@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Alexander', 'Moore', 0, 1, 1, 0, 0, NOW()),
-(19, 'doc19', 'doc19@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Harper', 'Jackson', 0, 1, 1, 0, 0, NOW()),
-(20, 'doc20', 'doc20@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Benjamin', 'Martin', 0, 1, 1, 0, 0, NOW()),
-(21, 'doc21', 'doc21@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Evelyn', 'Lee', 0, 1, 1, 0, 0, NOW()),
-(22, 'doc22', 'doc22@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Lucas', 'Perez', 0, 1, 1, 0, 0, NOW()),
-(23, 'doc23', 'doc23@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ella', 'Thompson', 0, 1, 1, 0, 0, NOW()),
-(24, 'doc24', 'doc24@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'William', 'White', 0, 1, 1, 0, 0, NOW()),
-(25, 'doc25', 'doc25@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Abigail', 'Harris', 0, 1, 1, 0, 0, NOW());
-
+INSERT INTO users_customuser (id, email, password, first_name, last_name, is_patient, is_doctor, is_active, is_staff, is_superuser, date_joined) VALUES
+(2, 'doc2@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'John', 'Doe', 0, 1, 1, 0, 0, NOW()),
+(3, 'doc3@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Emily', 'Smith', 0, 1, 1, 0, 0, NOW()),
+(4, 'doc4@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'David', 'Johnson', 0, 1, 1, 0, 0, NOW()),
+(5, 'doc5@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sarah', 'Williams', 0, 1, 1, 0, 0, NOW()),
+(6, 'doc6@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Michael', 'Brown', 0, 1, 1, 0, 0, NOW()),
+(7, 'doc7@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Emma', 'Jones', 0, 1, 1, 0, 0, NOW()),
+(8, 'doc8@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Daniel', 'Garcia', 0, 1, 1, 0, 0, NOW()),
+(9, 'doc9@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Olivia', 'Martinez', 0, 1, 1, 0, 0, NOW()),
+(10, 'doc10@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Matthew', 'Hernandez', 0, 1, 1, 0, 0, NOW()),
+(11, 'doc11@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ava', 'Lopez', 0, 1, 1, 0, 0, NOW()),
+(12, 'doc12@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'James', 'Gonzalez', 0, 1, 1, 0, 0, NOW()),
+(13, 'doc13@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sophia', 'Wilson', 0, 1, 1, 0, 0, NOW()),
+(14, 'doc14@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Benjamin', 'Anderson', 0, 1, 1, 0, 0, NOW()),
+(15, 'doc15@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Isabella', 'Thomas', 0, 1, 1, 0, 0, NOW()),
+(16, 'doc16@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Elijah', 'Taylor', 0, 1, 1, 0, 0, NOW()),
+(17, 'doc17@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Mia', 'Moore', 0, 1, 1, 0, 0, NOW()),
+(18, 'doc18@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Alexander', 'Jackson', 0, 1, 1, 0, 0, NOW()),
+(19, 'doc19@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Charlotte', 'Martin', 0, 1, 1, 0, 0, NOW()),
+(20, 'doc20@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'William', 'Lee', 0, 1, 1, 0, 0, NOW()),
+(21, 'doc21@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Amelia', 'Perez', 0, 1, 1, 0, 0, NOW()),
+(22, 'doc22@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ethan', 'Thompson', 0, 1, 1, 0, 0, NOW()),
+(23, 'doc23@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Harper', 'White', 0, 1, 1, 0, 0, NOW()),
+(24, 'doc24@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Logan', 'Harris', 0, 1, 1, 0, 0, NOW()),
+(25, 'doc25@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Evelyn', 'Sanchez', 0, 1, 1, 0, 0, NOW());
 
 -- CUSTOM USERS (Patients id 26-50)
-INSERT INTO users_customuser 
-(id, username, email, password, first_name, last_name, is_patient, is_doctor, is_active, is_staff, is_superuser, date_joined)
-VALUES
-(26, 'pat26', 'pat26@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Liam', 'Scott', 1, 0, 1, 0, 0, NOW()),
-(27, 'pat27', 'pat27@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Emma', 'Cooper', 1, 0, 1, 0, 0, NOW()),
-(28, 'pat28', 'pat28@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Noah', 'Ward', 1, 0, 1, 0, 0, NOW()),
-(29, 'pat29', 'pat29@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Olivia', 'Bennett', 1, 0, 1, 0, 0, NOW()),
-(30, 'pat30', 'pat30@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Elijah', 'Gray', 1, 0, 1, 0, 0, NOW()),
-(31, 'pat31', 'pat31@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ava', 'Jenkins', 1, 0, 1, 0, 0, NOW()),
-(32, 'pat32', 'pat32@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'William', 'Perry', 1, 0, 1, 0, 0, NOW()),
-(33, 'pat33', 'pat33@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sophia', 'Long', 1, 0, 1, 0, 0, NOW()),
-(34, 'pat34', 'pat34@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'James', 'Ramirez', 1, 0, 1, 0, 0, NOW()),
-(35, 'pat35', 'pat35@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Isabella', 'Cox', 1, 0, 1, 0, 0, NOW()),
-(36, 'pat36', 'pat36@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Benjamin', 'Howard', 1, 0, 1, 0, 0, NOW()),
-(37, 'pat37', 'pat37@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Mia', 'Ward', 1, 0, 1, 0, 0, NOW()),
-(38, 'pat38', 'pat38@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Lucas', 'Bailey', 1, 0, 1, 0, 0, NOW()),
-(39, 'pat39', 'pat39@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Charlotte', 'Reed', 1, 0, 1, 0, 0, NOW()),
-(40, 'pat40', 'pat40@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Henry', 'Murphy', 1, 0, 1, 0, 0, NOW()),
-(41, 'pat41', 'pat41@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Evelyn', 'Rivera', 1, 0, 1, 0, 0, NOW()),
-(42, 'pat42', 'pat42@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sebastian', 'Cook', 1, 0, 1, 0, 0, NOW()),
-(43, 'pat43', 'pat43@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Harper', 'Morgan', 1, 0, 1, 0, 0, NOW()),
-(44, 'pat44', 'pat44@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Jack', 'Bell', 1, 0, 1, 0, 0, NOW()),
-(45, 'pat45', 'pat45@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ella', 'Griffin', 1, 0, 1, 0, 0, NOW()),
-(46, 'pat46', 'pat46@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Logan', 'Kelly', 1, 0, 1, 0, 0, NOW()),
-(47, 'pat47', 'pat47@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Grace', 'Price', 1, 0, 1, 0, 0, NOW()),
-(48, 'pat48', 'pat48@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Jacob', 'Russell', 1, 0, 1, 0, 0, NOW()),
-(49, 'pat49', 'pat49@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Aria', 'Hayes', 1, 0, 1, 0, 0, NOW()),
-(50, 'pat50', 'pat50@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Daniel', 'Powell', 1, 0, 1, 0, 0, NOW());
-
+INSERT INTO users_customuser (id, email, password, first_name, last_name, is_patient, is_doctor, is_active, is_staff, is_superuser, date_joined) VALUES
+(26, 'pat26@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Liam', 'Scott', 1, 0, 1, 0, 0, NOW()),
+(27, 'pat27@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Emma', 'Cooper', 1, 0, 1, 0, 0, NOW()),
+(28, 'pat28@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Noah', 'Ward', 1, 0, 1, 0, 0, NOW()),
+(29, 'pat29@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Olivia', 'Morgan', 1, 0, 1, 0, 0, NOW()),
+(30, 'pat30@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'William', 'Bell', 1, 0, 1, 0, 0, NOW()),
+(31, 'pat31@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ava', 'Murphy', 1, 0, 1, 0, 0, NOW()),
+(32, 'pat32@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'James', 'Bailey', 1, 0, 1, 0, 0, NOW()),
+(33, 'pat33@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sophia', 'Rivera', 1, 0, 1, 0, 0, NOW()),
+(34, 'pat34@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Benjamin', 'Kelly', 1, 0, 1, 0, 0, NOW()),
+(35, 'pat35@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Isabella', 'Howard', 1, 0, 1, 0, 0, NOW()),
+(36, 'pat36@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Lucas', 'Ramos', 1, 0, 1, 0, 0, NOW()),
+(37, 'pat37@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Mia', 'Kim', 1, 0, 1, 0, 0, NOW()),
+(38, 'pat38@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Henry', 'Cox', 1, 0, 1, 0, 0, NOW()),
+(39, 'pat39@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Charlotte', 'Diaz', 1, 0, 1, 0, 0, NOW()),
+(40, 'pat40@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Alexander', 'Richardson', 1, 0, 1, 0, 0, NOW()),
+(41, 'pat41@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Amelia', 'Wood', 1, 0, 1, 0, 0, NOW()),
+(42, 'pat42@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Michael', 'Watson', 1, 0, 1, 0, 0, NOW()),
+(43, 'pat43@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Evelyn', 'Brooks', 1, 0, 1, 0, 0, NOW()),
+(44, 'pat44@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Daniel', 'Bennett', 1, 0, 1, 0, 0, NOW()),
+(45, 'pat45@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Abigail', 'Gray', 1, 0, 1, 0, 0, NOW()),
+(46, 'pat46@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Matthew', 'James', 1, 0, 1, 0, 0, NOW()),
+(47, 'pat47@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Ella', 'Reyes', 1, 0, 1, 0, 0, NOW()),
+(48, 'pat48@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Joseph', 'Cruz', 1, 0, 1, 0, 0, NOW()),
+(49, 'pat49@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'Sofia', 'Hughes', 1, 0, 1, 0, 0, NOW()),
+(50, 'pat50@example.com', 'pbkdf2_sha256$1000000$6flJ7dDLZUdk7ozvFwOh5c$MuveI5f/kNzdmuQfd4xH+mVHKYTSy0sMdvomLbKKi6A=', 'David', 'Price', 1, 0, 1, 0, 0, NOW());
 
 -- DOCTOR PROFILES (id 1 to 24) linked to doctor users 2 to 25
 INSERT INTO users_doctorprofile (id, user_id, specialization, bio) VALUES
