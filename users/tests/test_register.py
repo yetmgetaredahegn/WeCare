@@ -58,14 +58,7 @@ class TestRegister:
         assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_duplicate_email_returns_400(self):
-        # CustomUser.objects.create_user(
-        #                 first_name= "firstest",
-        #                 last_name= "lasttest",
-        #                 email = "duplicate@check.com",
-        #                 password = "Test@123",
-        #                 is_doctor = False,
-        #                 is_patient = True
-        # )
+        
         client = APIClient()
 
         client.post("/auth/users/", {
