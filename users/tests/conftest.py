@@ -4,7 +4,7 @@ from users.models import CustomUser
 
 @pytest.fixture
 def api_client(db):
-    return APIClient
+    return APIClient()
 
 @pytest.fixture
 def test_user(db):
@@ -27,7 +27,7 @@ def authenticate_client(db, api_client, test_user):
     def do_authenticate_client(**kwargs):
         user = test_user(**kwargs)
         api_client.force_authenticate(user=user)
-        return api_client, user
+        return api_client
     return do_authenticate_client
 
 
