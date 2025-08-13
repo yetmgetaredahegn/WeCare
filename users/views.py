@@ -52,8 +52,11 @@ class DoctorProfileViewSet(ModelViewSet):
     def profile(self,request):
         doctor, created = DoctorProfile.objects.get_or_create(
                 user_id=request.user.id, 
-                defaults={"specialization": "", "bio": "", "available_days": ""}
-                )    
+                defaults={"specialization": "", "bio": ""}
+                )  
+
+        if created:
+            doctor.available_days.set([])  
 
         if request.method == 'GET':
             serializer = DoctorProfileSerializer(doctor)
