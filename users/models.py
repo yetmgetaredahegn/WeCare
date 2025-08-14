@@ -27,7 +27,7 @@ class Day(models.Model):
         return self.name
 
 class DoctorProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="doctorprofile")
     specialization = models.CharField(max_length=255)
     bio = models.TextField()
     available_days = models.ManyToManyField(Day)

@@ -1,8 +1,7 @@
-import email
 from http import client
-from conftest import authenticate_client,test_user
 from rest_framework import status
 from pytest import fixture, mark
+from common_conftest.conftest import authenticate_client,test_user,api_client
 
 
 

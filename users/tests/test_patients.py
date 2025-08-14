@@ -3,7 +3,7 @@ from http import client
 from urllib import response
 from rest_framework import status
 from pytest import mark
-from conftest import authenticate_client, test_user
+from common_conftest.conftest import authenticate_client,test_user,api_client
 
 @mark.django_db
 class TestPatientProfileAccess:

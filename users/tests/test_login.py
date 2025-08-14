@@ -8,7 +8,7 @@ from rest_framework.test import APIClient
 from rest_framework import status
 
 from users.models import CustomUser
-from conftest import test_user
+from common_conftest.conftest import test_user
 
 
 
