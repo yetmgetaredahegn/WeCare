@@ -1,10 +1,10 @@
 from datetime import date
 from multiprocessing import AuthenticationError
 from django.forms import ValidationError
-from rest_framework import serializers
+from rest_framework import serializers,status
 
 from scheduling.models import Appointment
-from users.models import PatientProfile
+from users.models import DoctorProfile, PatientProfile
 
 
 class CreateAppointmentSerializer(serializers.ModelSerializer):
@@ -12,6 +12,11 @@ class CreateAppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Appointment
         fields=['doctor_id','schedule_date','schedule_time']
+
+    def validate_doctor_id(self,value):
+        if not DoctorProfile.objects.filter(pk=value).exists():
+            raise ValidationError("Invalid Doctor ID")
+        return value
 
     def validate(self, attrs):
         user = self.context['request'].user

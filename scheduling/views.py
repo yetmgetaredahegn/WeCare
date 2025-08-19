@@ -1,5 +1,7 @@
+from requests import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 
 from scheduling.filters import AppointmentFilter
@@ -30,4 +32,4 @@ class AppointmentViewSet(ModelViewSet):
         elif self.request.method in ['PATCH','PUT']:
             return UpdateAppointmentSerializer
         return AppointmentSerializer
- 
+    
