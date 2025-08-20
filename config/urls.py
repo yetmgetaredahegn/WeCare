@@ -19,6 +19,10 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 import users
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("WeCare API is running ✅")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +32,5 @@ urlpatterns = [
     path('clinical/', include('clinical.urls')),
     path('scheduling/', include('scheduling.urls')),
     path('users/', include('users.urls')),
+    path('', home),
 ] 
