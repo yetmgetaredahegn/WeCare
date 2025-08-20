@@ -28,7 +28,9 @@ def home(request):
             "Admin Panel": "/admin/",
             "Users": "/users/",
             "Scheduling": "/scheduling/",
-            "Clinical": "/clinical/"
+            "Clinical": "/clinical/",
+            "Login": "/auth/jwt/create/",
+            "Register": "/auth/users/"
         }
     })
 
