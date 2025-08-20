@@ -2,17 +2,17 @@
 INSERT INTO clinical_diagnosis (id, name, code, description) VALUES
 (1, 'Hypertension', 'I10', 'A condition in which the force of the blood against the artery walls is too high.'),
 (2, 'Type 2 Diabetes Mellitus', 'E11', 'A chronic condition that affects the way the body processes blood sugar (glucose).'),
-(3, 'Asthma', 'J45', 'A condition in which a person\'s airways become inflamed, narrow and swell, and produce extra mucus.'),
+(3, 'Asthma', 'J45', 'A condition in which a person''s airways become inflamed, narrow and swell, and produce extra mucus.'),
 (4, 'Chronic Obstructive Pulmonary Disease (COPD)', 'J44', 'A group of lung diseases that block airflow and make it difficult to breathe.'),
 (5, 'Depressive Disorder', 'F32', 'A mental health disorder characterized by persistently depressed mood or loss of interest in activities.'),
 (6, 'Anxiety Disorder', 'F41', 'A group of mental disorders characterized by significant feelings of anxiety and fear.'),
 (7, 'Migraine', 'G43', 'A neurological condition characterized by intense, debilitating headaches.'),
 (8, 'Osteoarthritis', 'M19', 'A type of arthritis that occurs when flexible tissue at the ends of bones wears down.'),
-(9, 'Hypothyroidism', 'E03', 'A condition in which the thyroid gland doesn’t produce enough thyroid hormones.'),
+(9, 'Hypothyroidism', 'E03', 'A condition in which the thyroid gland doesn''t produce enough thyroid hormones.'),
 (10, 'Gastroesophageal Reflux Disease (GERD)', 'K21', 'A digestive disease in which stomach acid or bile irritates the food pipe lining.'),
 (11, 'Acute Bronchitis', 'J20', 'An inflammation of the lining of your bronchial tubes, which carry air to and from your lungs.'),
 (12, 'Urinary Tract Infection', 'N39', 'An infection in any part of your urinary system — kidneys, ureters, bladder, and urethra.'),
-(13, 'Anemia', 'D64', 'A condition in which the blood doesn’t have enough healthy red blood cells.'),
+(13, 'Anemia', 'D64', 'A condition in which the blood doesn''t have enough healthy red blood cells.'),
 (14, 'Back Pain', 'M54', 'Pain felt in the back that usually originates from the muscles, nerves, bones, joints or other structures.'),
 (15, 'Sinusitis', 'J01', 'An inflammation or swelling of the tissue lining the sinuses.'),
 (16, 'Pneumonia', 'J18', 'An infection that inflames the air sacs in one or both lungs.'),
@@ -26,7 +26,7 @@ INSERT INTO clinical_diagnosis (id, name, code, description) VALUES
 (24, 'HIV Disease', 'B24', 'A virus that attacks the body’s immune system.'),
 (25, 'COVID-19', 'U07.1', 'A respiratory illness caused by the novel coronavirus SARS-CoV-2.'),
 (26, 'Chickenpox', 'B01', 'A highly contagious viral infection causing an itchy, blister-like rash.'),
-(27, 'Measles', 'B05', 'A viral infection that’s serious for small children but is easily preventable by a vaccine.'),
+(27, 'Measles', 'B05', 'A viral infection that''s serious for small children but is easily preventable by a vaccine.'),
 (28, 'Mumps', 'B26', 'A viral infection that affects the salivary glands.'),
 (29, 'Rubella', 'B06', 'A contagious viral infection best known by its distinctive red rash.'),
 (30, 'Tetanus', 'A35', 'A bacterial infection that causes painful muscle stiffness and spasms.'),
@@ -49,4 +49,5 @@ INSERT INTO clinical_diagnosis (id, name, code, description) VALUES
 (47, 'Gout', 'M10', 'A form of arthritis characterized by severe pain, redness, and tenderness in joints.'),
 (48, 'Insomnia', 'F51', 'A sleep disorder in which you have trouble falling and/or staying asleep.'),
 (49, 'Alcohol Use Disorder', 'F10', 'A medical condition characterized by an impaired ability to stop or control alcohol use.'),
-(50, 'Nicotine Dependence', 'F17', 'Addiction to tobacco products containing nicotine.');
+(50, 'Nicotine Dependence', 'F17', 'Addiction to tobacco products containing nicotine.')
+ON CONFLICT (id) DO NOTHING;

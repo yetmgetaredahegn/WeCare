@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from config import settings
+from config.settings import common
 from users.managers import CustomUserManager
 
 class CustomUser(AbstractUser):
@@ -27,14 +27,14 @@ class Day(models.Model):
         return self.name
 
 class DoctorProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="doctorprofile")
+    user = models.OneToOneField(common.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="doctorprofile")
     specialization = models.CharField(max_length=255)
     bio = models.TextField()
     available_days = models.ManyToManyField(Day)
     
 
 class PatientProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(common.AUTH_USER_MODEL, on_delete=models.CASCADE)
     age = models.IntegerField(null=True)
     gender = models.CharField(max_length=255)
     phone = models.CharField(max_length=15)
