@@ -16,6 +16,9 @@ pyjwt = ">=2.10.1"
 gunicorn = "*"
 dj-database-url = "*"
 python-decouple = "*"
+whitenoise = "*"
+django-bootstrap5 = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 pytest = "*"

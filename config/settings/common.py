@@ -37,16 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'rest_framework',
     'django_filters',
     'djoser',
-    'users',
-    'scheduling',
+    'corsheaders',
+    'rest_framework',
     'clinical',
+    'homepage',
+    'scheduling',
+    'users',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,6 +131,12 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 INTERNAL_IPS = [
     "127.0.0.1",
+]
+
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8001',
+    'http://127.0.0.1:8001'
 ]
 
 

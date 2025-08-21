@@ -28,16 +28,16 @@ class Day(models.Model):
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(common.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="doctorprofile")
-    specialization = models.CharField(max_length=255)
-    bio = models.TextField()
+    specialization = models.CharField(max_length=255,blank=True)
+    bio = models.TextField(blank=True)
     available_days = models.ManyToManyField(Day)
     
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(common.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    age = models.IntegerField(null=True)
-    gender = models.CharField(max_length=255)
-    phone = models.CharField(max_length=15)
+    age = models.IntegerField(null=True,blank=True)
+    gender = models.CharField(max_length=255,blank=True)
+    phone = models.CharField(max_length=15,blank=True)
 
     def __str__(self):
         return self.user.get_full_name()

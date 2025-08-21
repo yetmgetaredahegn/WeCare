@@ -25,7 +25,18 @@ class UserCreatePasswordRetypeSerializer(BaseUserCreateSerializer):
         return super().validate(attrs)
 
     def create(self, validated_data):
-        user = super().create(validated_data)
+        try:
+            # call manager directly
+            user = User.objects.create_user(
+                email=validated_data["email"],
+                password=validated_data["password"],
+                first_name=validated_data.get("first_name", ""),
+                last_name=validated_data.get("last_name", ""),
+                is_doctor=validated_data.get("is_doctor", False),
+                is_patient=validated_data.get("is_patient", False),
+            )
+        except Exception as e:
+            raise serializers.ValidationError({"detail": str(e)})
 
         if user.is_patient:
             PatientProfile.objects.create(user=user)
