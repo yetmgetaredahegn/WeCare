@@ -6,6 +6,8 @@ cryptography==45.0.6
 defusedxml==0.7.1
 dj-database-url==3.0.1
 Django==5.2.5
+django-bootstrap5==25.2
+django-cors-headers==4.7.0
 django-debug-toolbar==6.0.0
 django-filter==25.1
 djangorestframework==3.16.1
@@ -33,3 +35,4 @@ social-auth-app-django==5.5.1
 social-auth-core==4.7.0
 sqlparse==0.5.3
 urllib3==2.5.0
+whitenoise==6.9.0
