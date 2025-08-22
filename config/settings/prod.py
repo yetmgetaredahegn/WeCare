@@ -13,6 +13,11 @@ DEBUG = False
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL'))
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True,   
+    )
 }
+
 
