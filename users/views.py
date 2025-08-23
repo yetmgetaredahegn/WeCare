@@ -18,7 +18,7 @@ class PatientProfileViewSet(ModelViewSet):
     serializer_class = PatientProfileSerializer
     permission_classes = [IsAdminUser]
 
-    @action(detail=False, methods=['GET','PUT'], permission_classes=[IsPatientPermission])
+    @action(detail=False, methods=['GET','PUT','PATCH'], permission_classes=[IsPatientPermission])
     def profile(self,request):
         patient, created = PatientProfile.objects.get_or_create(
             user_id=request.user.id, 
@@ -48,7 +48,7 @@ class DoctorProfileViewSet(ModelViewSet):
     #         return IsAdminUser
     #     return IsAuthenticated
 
-    @action(detail=False, methods=['GET','PUT'], permission_classes=[IsDoctorPermission])
+    @action(detail=False, methods=['GET','PUT','PATCH'], permission_classes=[IsDoctorPermission])
     def profile(self,request):
         doctor, created = DoctorProfile.objects.get_or_create(
                 user_id=request.user.id, 
