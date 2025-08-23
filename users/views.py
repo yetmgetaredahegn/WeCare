@@ -28,7 +28,7 @@ class PatientProfileViewSet(ModelViewSet):
         if request.method == 'GET':
             serializer = PatientProfileSerializer(patient)
             return Response(serializer.data)
-        elif request.method == 'PUT':
+        elif request.method in ['PUT','PATCH']:
             serializer = PatientProfileSerializer(patient,data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
@@ -61,7 +61,7 @@ class DoctorProfileViewSet(ModelViewSet):
         if request.method == 'GET':
             serializer = DoctorProfileSerializer(doctor)
             return Response(serializer.data)
-        elif request.method == 'PUT':
+        elif request.method in ['PUT','PATCH']:
             serializer = DoctorProfileSerializer(doctor,data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
