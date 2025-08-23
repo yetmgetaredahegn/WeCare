@@ -9,11 +9,11 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     initial = True
-
+    
     dependencies = [
-        ('auth', '0013_alter_user_email_alter_user_first_name_and_more')
-
+        ('auth', '0012_alter_user_first_name_max_length'),
     ]
+
 
     operations = [
         migrations.CreateModel(
