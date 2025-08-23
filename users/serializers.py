@@ -1,3 +1,4 @@
+from pyexpat import model
 from xml.dom import ValidationErr
 from django.forms import ValidationError
 from djoser.serializers import UserCreatePasswordRetypeSerializer as BaseUserCreateSerializer
@@ -60,6 +61,12 @@ class PatientProfileSerializer(serializers.ModelSerializer):
         fields = ['id','user_id','age','gender','phone']
 
 
+class UpdatePatientProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PatientProfile
+        fields = ['age','gender','phone']
+
+
 class DoctorProfileSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     available_days = serializers.SlugRelatedField(
@@ -74,3 +81,13 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
     
     def get_user(self, obj):
         return f"Dr {obj.user.first_name}"
+
+class UpdateDoctorProfileSerializer(serializers.ModelSerializer):
+    available_days = serializers.SlugRelatedField(
+        slug_field = 'name',
+        queryset = Day.objects.all(),
+        many = True
+        )
+    class Meta:
+        model = DoctorProfile
+        fields = ['specialization','bio','available_days']

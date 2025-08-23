@@ -9,7 +9,7 @@ from django_filters.rest_framework import  DjangoFilterBackend
 from users.filters import AvailableDoctors
 from users.models import DoctorProfile, PatientProfile
 from users.permissions import IsPatientPermission,IsDoctorPermission
-from users.serializers import DoctorProfileSerializer, PatientProfileSerializer
+from users.serializers import DoctorProfileSerializer, PatientProfileSerializer, UpdateDoctorProfileSerializer, UpdatePatientProfileSerializer
 
 
  
@@ -29,7 +29,7 @@ class PatientProfileViewSet(ModelViewSet):
             serializer = PatientProfileSerializer(patient)
             return Response(serializer.data)
         elif request.method in ['PUT','PATCH']:
-            serializer = PatientProfileSerializer(patient,data=request.data)
+            serializer = UpdatePatientProfileSerializer(patient,data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             status_code = 201 if created else 200
@@ -62,7 +62,7 @@ class DoctorProfileViewSet(ModelViewSet):
             serializer = DoctorProfileSerializer(doctor)
             return Response(serializer.data)
         elif request.method in ['PUT','PATCH']:
-            serializer = DoctorProfileSerializer(doctor,data=request.data)
+            serializer = UpdateDoctorProfileSerializer(doctor,data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             status_code = 201 if created else 200
