@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +72,7 @@
           <!-- Doctor Testimonial -->
           <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
-                <img src="static/home/images/doctor.png" class="card-img-top rounded-circle mx-auto mt-3"
+                <img src="{% static 'home/images/doctor.png' %}" class="card-img-top rounded-circle mx-auto mt-3"
                 alt="Doctor"
                 style="width: 100px; height: 100px; object-fit: contain;">
            
@@ -84,7 +86,7 @@
           <!-- Admin Testimonial -->
           <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
-              <img src="static/home/images/admin.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Admin" style="width: 100px; height: 100px; object-fit: contain;">
+              <img src="{% static 'home/images/admin.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Admin" style="width: 100px; height: 100px; object-fit: contain;">
               <div class="card-body">
                 <h5 class="card-title">Yared Tesfaye (Admin)</h5>
                 <p class="card-text fst-italic">“Handling users and system data is now seamless and secure. Highly recommended!”</p>
@@ -95,7 +97,7 @@
           <!-- Patient Testimonial -->
           <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
-              <img src="static/home/images/patient.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Patient" style="width: 100px; height: 100px; object-fit: cover;">
+              <img src="{% static 'home/images/patient.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Patient" style="width: 100px; height: 100px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">Selam Fikadu</h5>
                 <p class="card-text fst-italic">“Booking appointments online is now super easy. I love the clean interface.”</p>
