@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+def home(request):
+    return JsonResponse({
+        "message": "Welcome to WeCare API 🚀",
+        "endpoints": {
+            "Admin Panel": "/admin/",
+            "Users": "/users/",
+            "Scheduling": "/scheduling/",
+            "Clinical": "/clinical/",
+            "Login": "/auth/jwt/create/",
+            "Register": "/auth/users/"
+        }
+    })

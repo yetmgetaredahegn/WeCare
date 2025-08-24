@@ -19,20 +19,6 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 import users
-from django.http import JsonResponse
-
-def home(request):
-    return JsonResponse({
-        "message": "Welcome to WeCare API 🚀",
-        "endpoints": {
-            "Admin Panel": "/admin/",
-            "Users": "/users/",
-            "Scheduling": "/scheduling/",
-            "Clinical": "/clinical/",
-            "Login": "/auth/jwt/create/",
-            "Register": "/auth/users/"
-        }
-    })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,5 +28,5 @@ urlpatterns = [
     path('clinical/', include('clinical.urls')),
     path('scheduling/', include('scheduling.urls')),
     path('users/', include('users.urls')),
-    path('', home, name='home'),
+    path('', include('homepage.urls')),
 ] 
