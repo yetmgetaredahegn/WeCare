@@ -1,7 +1,7 @@
-const usersLink = document.getElementById("usersLink")
+// const usersLink = document.getElementById("usersLink")
 
-usersLink.addEventListener("click", function(event){
-    event.preventDefault();
-    fetch("/users/")
-        .then(response => response.json())
-})
+// usersLink.addEventListener("click", function(event){
+//     event.preventDefault();
+//     fetch("/users/")
+//         .then(response => response.json())
+// })
