@@ -52,11 +52,11 @@
 
            
 
-      <form method="POST" id="loginForm" action="">
-      
+      <form id="loginForm">
+        {% csrf_token %}
         <div class="mb-3">
           <label for="id_username" class="form-label">Email address</label>
-          <input type="email" name="username" class="form-control" id="id_username" placeholder="you@example.com" required>
+          <input type="email" name="email" class="form-control" id="id_email" placeholder="you@example.com" required>
         </div>
         <div class="mb-3">
           <label for="id_password" class="form-label">Password</label>
@@ -87,5 +87,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'login/app.js' %}"></script>
 </body>
 </html>
