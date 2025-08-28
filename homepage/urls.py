@@ -8,7 +8,7 @@ from . import views
 
 # URLConf
 urlpatterns = [
-    path('home/', views.home),
+    path('home/', TemplateView.as_view(template_name='home/index.html')),
     path('', TemplateView.as_view(template_name='home/index.html')),
     path('register/', TemplateView.as_view(template_name='register/register.html')),
     path('login/', TemplateView.as_view(template_name='login/login.html')),
