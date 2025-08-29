@@ -1,0 +1,18 @@
+#hc {
+    color: springgreen;
+    font-weight: bold;
+}
+
+/* Make all nav-links bold on hover/focus */
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  font-weight: 700;
+  color: rgb(2, 61, 32);
+}
+
+/* Make active nav-link bold and colored */
+.navbar .nav-link.active {
+  font-weight: 700;
+  color: rgb(2, 61, 32) !important;
+}
+
