@@ -2,19 +2,18 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 interface User {
-  id: number
-  name: string
-  email: string
+  doctor: string
+  patient: string
 }
 
 const Users = () => {
-  const [users, setUsers] = useState<User[]>([])
+  const [users, setUsers] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     axios
-      .get<User[]>("http://127.0.0.1:8000/users/")
+      .get<User>("http://127.0.0.1:8000/users/")
       .then((response) => {
         setUsers(response.data)
       })
@@ -37,18 +36,15 @@ const Users = () => {
 
   return (
     <div className="mx-auto max-w-xl">
-      <h1 className="mb-4 text-2xl font-semibold">Users</h1>
-      <ul className="space-y-2">
-        {users.map((user) => (
-          <li
-            key={user.id}
-            className="rounded-lg border bg-white p-3 shadow-sm"
-          >
-            <p className="font-medium">{user.name}</p>
-            <p className="text-sm text-gray-600">{user.email}</p>
-          </li>
-        ))}
-      </ul>
+      <h1 className="mb-4 text-2xl font-semibold">User Categories</h1>
+      <div className="space-y-2">
+        {users && (
+          <>
+            <a href={users.doctor} className="block p-3 border rounded">Doctor API</a>
+            <a href={users.patient} className="block p-3 border rounded">Patient API</a>
+          </>
+        )}
+      </div>
     </div>
   )
 }
