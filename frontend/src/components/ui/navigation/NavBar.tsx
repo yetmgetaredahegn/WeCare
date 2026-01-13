@@ -21,8 +21,8 @@ const NavBar = () => {
               className={({ isActive }) =>
                 `rounded-xl px-3 py-1 text-lg font-light transition ${
                   isActive
-                    ? "bg-slate-700 text-sky-300"
-                    : "text-white hover:bg-slate-700 hover:text-sky-300"
+                    ? "bg-slate-700 text-sky-100"
+                    : "text-white hover:bg-slate-700 hover:text-sky-100"
                 }`
               }
             >

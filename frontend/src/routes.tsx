@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Scheduling from "./pages/Scheduling"
 import Clinical from "./pages/Clinical"
 import Users from "./pages/Users"
+import Login from "./pages/Login"
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: '/users',
         Component: Users
+      },
+      {
+        path: '/login',
+        Component: Login
       }
     ],
   },
