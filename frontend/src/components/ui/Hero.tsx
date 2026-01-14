@@ -1,5 +1,6 @@
 import React from "react";
-import HeroImageSlider from "./HeroSlider";
+import HeroImageSlider from "./HeroImageSlider";
+import { Link } from "react-router";
 
 interface HeroProps {
   title: string;
@@ -31,22 +32,27 @@ const Hero: React.FC<HeroProps> = ({
             <p className="mt-6 text-lg text-slate-800">
               {subtitle}
             </p>
+            <p className="text-sm font-semibold text-slate-500 hover:text-green-600">
+              <Link to='/about'>Learn more →</Link>
+            </p>
 
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start">
+            <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row">
               <button
                 onClick={onCtaClick}
-                className="rounded-lg bg-cyan-600 px-8 py-3.5 text-base font-semibold text-white transition hover:bg-cyan-600"
+                className="group relative flex items-center gap-2 rounded-lg bg-cyan-600 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-cyan-700 hover:shadow-lg active:scale-95"
               >
                 {ctaText}
+                {/* Animated Arrow to draw the eye */}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+
+                </span>
               </button>
 
-              <a
-                href="#learn-more"
-                className="text-sm font-semibold text-slate-500 hover:text-green-600"
-              >
-                Learn more →
-              </a>
+              <p className="text-sm font-medium text-gray-500 sm:text-gray-400">
+                Take one step for your healthcare
+              </p>
             </div>
+
           </div>
 
           {/* Image */}

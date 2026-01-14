@@ -11,9 +11,7 @@ const App = () => {
       </main>
 
       <footer className="border-t px-6 py-4 text-center text-sm text-muted-foreground">
-        © 2026 Healthcare System. All rights reserved.
-        <br />
-        Developed by Yetmgeta Redahegn.
+        © 2026 Healthcare System. All rights reserved. Developed by Yetmgeta Redahegn.
       </footer>
     </div>
   )

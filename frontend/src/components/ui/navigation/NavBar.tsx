@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom"
 
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 shadow-lg">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 drop-shadow-md">
       <div className="flex items-center justify-around px-6 py-3">
         <Link to="/" className="flex items-center gap-1 text-lg font-semibold text-green-600">
           We
@@ -15,6 +15,7 @@ const NavBar = () => {
             { to: "/scheduling", label: "Scheduling" },
             { to: "/clinical", label: "Clinical" },
             { to: "/users", label: "Users" },
+            { to: "/about", label: "About" },
           ].map(({ to, label }) => (
             <NavLink
               key={to}

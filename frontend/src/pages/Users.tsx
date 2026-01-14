@@ -1,5 +1,6 @@
 import { useEffect, useState, type SetStateAction } from "react"
 import axios from "axios"
+import ProtectedNotice from "@/components/ui/ProtectedNotice"
 
 interface User {
   doctor: string
@@ -35,17 +36,12 @@ const Users = () => {
   }
 
   return (
-    <div className="mx-auto max-w-xl">
-      <h1 className="mb-4 text-2xl font-semibold">User Categories</h1>
-      <div className="space-y-2">
-        {users && (
-          <>
-            <a href={users.doctor} className="block p-3 border rounded">Doctor API</a>
-            <a href={users.patient} className="block p-3 border rounded">Patient API</a>
-          </>
-        )}
-      </div>
-    </div>
+    <ProtectedNotice
+      title="Users"
+      description="To protect the privacy and security of patient appointments, this section is available only to registered users. Please sign in or create an account to continue."
+      ctaText="Login to your account"
+      ctaLink="/login"
+    />
   )
 }
 

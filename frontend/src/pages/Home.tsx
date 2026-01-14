@@ -12,7 +12,7 @@ const Home = () => {
         A grand platform who care about your healthcare management needs. 
         Streamline scheduling, clinical data, and user management all in one place.
         "
-        ctaText="Login"
+        ctaText="Get Started"
         onCtaClick={() => navigate("/login")}
       />
     </div>
