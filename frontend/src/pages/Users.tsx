@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type SetStateAction } from "react"
 import axios from "axios"
 
 interface User {
@@ -14,10 +14,10 @@ const Users = () => {
   useEffect(() => {
     axios
       .get<User>("http://127.0.0.1:8000/users/")
-      .then((response) => {
+      .then((response: { data: SetStateAction<User | null> }) => {
         setUsers(response.data)
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error(err)
         setError("Failed to load users")
       })

@@ -5,10 +5,13 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 text-white">
       <Hero
         title="Welcome to WeCare"
-        subtitle="Your digital healthcare assistant"
+        subtitle="
+        A grand platform who care about your healthcare management needs. 
+        Streamline scheduling, clinical data, and user management all in one place.
+        "
         ctaText="Login"
         onCtaClick={() => navigate("/login")}
       />

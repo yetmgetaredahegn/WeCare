@@ -1,4 +1,5 @@
 import React from "react";
+import HeroImageSlider from "./HeroSlider";
 
 interface HeroProps {
   title: string;
@@ -14,49 +15,51 @@ const Hero: React.FC<HeroProps> = ({
   onCtaClick,
 }) => {
   return (
-    <section className="relative overflow-hidden bg-gray-50">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/60 to-white -z-10" />
+    <section className="relative overflow-hidden">
+      {/* OPTIONAL background glow */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-900/20 to-transparent" />
 
-      <div className="mx-auto max-w-7xl px-6 py-20">
+      <div className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-          
-          {/* Left: Text */}
+
+          {/* Text */}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-slate-900">
               {title}
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg text-slate-800">
               {subtitle}
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start">
               <button
                 onClick={onCtaClick}
-                className="px-8 py-3.5 text-base font-semibold text-white transition bg-indigo-600 rounded-lg shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-lg bg-cyan-600 px-8 py-3.5 text-base font-semibold text-white transition hover:bg-cyan-600"
               >
                 {ctaText}
               </button>
 
               <a
                 href="#learn-more"
-                className="text-sm font-semibold text-gray-900 hover:text-indigo-600"
+                className="text-sm font-semibold text-slate-500 hover:text-green-600"
               >
                 Learn more →
               </a>
             </div>
           </div>
 
-          {/* Right: Image */}
+          {/* Image */}
           <div className="flex justify-center md:justify-end">
-            <img
-              src="/assets/9109665.png"
-              alt="Healthcare illustration"
-              className="w-full max-w-md object-contain rounded-4xl shadow-lg"
-              
+            <HeroImageSlider
+              images={[
+                "/assets/wecare.png",
+                "/assets/9109665.png",
+                "/assets/patient.jpg",
+              ]}
             />
           </div>
+
         </div>
       </div>
     </section>

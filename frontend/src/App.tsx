@@ -3,7 +3,7 @@ import Navbar from "./components/ui/navigation/NavBar"
 
 const App = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50">
+    <div className="flex min-h-screen flex-col bg-gray-50 text-white">
       <Navbar />
 
       <main className="flex-1 pt-20 px-6">

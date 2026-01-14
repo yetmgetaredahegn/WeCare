@@ -2,10 +2,11 @@ import { Link, NavLink } from "react-router-dom"
 
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-slate-800 shadow-lg">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 shadow-lg">
       <div className="flex items-center justify-around px-6 py-3">
         <Link to="/" className="flex items-center gap-1 text-lg font-semibold text-green-600">
-          We<span className="text-white">Care</span>
+          We
+          <span className="text-5xl text-cyan-600">Care</span>
         </Link>
 
         <div className="flex items-center gap-5">
@@ -21,8 +22,8 @@ const NavBar = () => {
               className={({ isActive }) =>
                 `rounded-xl px-3 py-1 text-lg font-light transition ${
                   isActive
-                    ? "bg-slate-700 text-sky-100"
-                    : "text-white hover:bg-slate-700 hover:text-sky-100"
+                    ? "text-shadow-lg text-slate-900 drop-shadow-lg"
+                    : "text-slate-900 hover:text-shadow-lg hover:drop-shadow-lg"
                 }`
               }
             >
