@@ -6,6 +6,7 @@ import Clinical from "./pages/Clinical"
 import Users from "./pages/Users"
 import Login from "./pages/Login"
 import About from "./pages/About"
+import Register from "./pages/Register"
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         Component: Login
+      },
+      {
+        path: '/register',
+        Component: Register,
       },
       {
         path: '/about',
