@@ -8,32 +8,32 @@ interface User {
 }
 
 const Users = () => {
-  const [users, setUsers] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  // const [users, setUsers] = useState<User | null>(null)
+  // const [loading, setLoading] = useState(true)
+  // const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    axios
-      .get<User>("http://127.0.0.1:8000/users/")
-      .then((response: { data: SetStateAction<User | null> }) => {
-        setUsers(response.data)
-      })
-      .catch((err: any) => {
-        console.error(err)
-        setError("Failed to load users")
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get<User>("http://127.0.0.1:8000/users/")
+  //     .then((response: { data: SetStateAction<User | null> }) => {
+  //       setUsers(response.data)
+  //     })
+  //     .catch((err: any) => {
+  //       console.error(err)
+  //       setError("Failed to load users")
+  //     })
+  //     .finally(() => {
+  //       setLoading(false)
+  //     })
+  // }, [])
 
-  if (loading) {
-    return <p className="text-center">Loading users...</p>
-  }
+  // if (loading) {
+  //   return <p className="text-center">Loading users...</p>
+  // }
 
-  if (error) {
-    return <p className="text-center text-red-500">{error}</p>
-  }
+  // if (error) {
+  //   return <p className="text-center text-red-500">{error}</p>
+  // }
 
   return (
     <ProtectedNotice
