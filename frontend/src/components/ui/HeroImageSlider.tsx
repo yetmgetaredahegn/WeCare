@@ -20,19 +20,21 @@ const HeroImageSlider: React.FC<HeroImageSliderProps> = ({
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full max-w-md aspect-[4/3] overflow-hidden rounded-xl shadow-2xl">
-      {images.map((src, index) => (
-        <img
-          key={src}
-          src={src}
-          alt="Healthcare illustration"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-    </div>
-  );
+  // 🔹 max-w-sm on mobile, max-w-md on larger screens
+  <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/3] overflow-hidden rounded-xl shadow-2xl">
+    {images.map((src, index) => (
+      <img
+        key={src}
+        src={src}
+        alt="Healthcare illustration"
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+          index === currentIndex ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    ))}
+  </div>
+);
+
 };
 
 
