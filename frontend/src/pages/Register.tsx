@@ -93,7 +93,7 @@ const Register = () => {
             placeholder="First name"
             onChange={handleChange}
             required
-            className="w-full rounded-xl border px-4 py-4 text-base
+            className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
                        focus:ring-2 focus:ring-cyan-200 outline-none"
           />
@@ -104,7 +104,7 @@ const Register = () => {
             placeholder="Last name"
             onChange={handleChange}
             required
-            className="w-full rounded-xl border px-4 py-4 text-base
+            className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
                        focus:ring-2 focus:ring-cyan-200 outline-none"
           />
@@ -116,7 +116,7 @@ const Register = () => {
             autoComplete="email"
             onChange={handleChange}
             required
-            className="w-full rounded-xl border px-4 py-4 text-base
+            className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
                        focus:ring-2 focus:ring-cyan-200 outline-none"
           />
@@ -128,7 +128,7 @@ const Register = () => {
             autoComplete="new-password"
             onChange={handleChange}
             required
-            className="w-full rounded-xl border px-4 py-4 text-base
+            className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
                        focus:ring-2 focus:ring-cyan-200 outline-none"
           />
@@ -139,7 +139,7 @@ const Register = () => {
             placeholder="Confirm password"
             onChange={handleChange}
             required
-            className="w-full rounded-xl border px-4 py-4 text-base
+            className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
                        focus:ring-2 focus:ring-cyan-200 outline-none"
           />
