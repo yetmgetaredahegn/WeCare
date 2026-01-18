@@ -18,15 +18,16 @@ const ProtectedNotice: React.FC<ProtectedNoticeProps> = ({
   showImages = true,
 }) => {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-20 text-center space-y-10">
+    <section className="mx-auto max-w-4xl px-6 py-20 text-center space-y-10 bg-gray-50 text-slate-900
+        dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
       {/* Text block */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           {title}
         </h2>
 
-        <p className="text-slate-600 max-w-xl mx-auto leading-relaxed">
+        <p className="text-slate-600 max-w-xl mx-auto leading-relaxed dark:text-slate-300">
           {description}
         </p>
       </div>

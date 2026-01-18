@@ -5,7 +5,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-50 text-white">
+    <div className="bg-gray-50 text-slate-900
+        dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
       <Hero
         title="Welcome to WeCare"
         subtitle="

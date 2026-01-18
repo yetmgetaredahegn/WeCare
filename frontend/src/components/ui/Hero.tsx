@@ -16,7 +16,8 @@ const Hero: React.FC<HeroProps> = ({
   onCtaClick,
 }) => {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-gray-50 text-slate-900
+        dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* background glow stays — lightweight */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-900/20 to-transparent" />
 
@@ -27,11 +28,11 @@ const Hero: React.FC<HeroProps> = ({
           {/* TEXT */}
           <div className="text-center md:text-left">
             {/* 🔹 Better mobile scaling */}
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
               {title}
             </h1>
 
-            <p className="mt-5 text-base sm:text-lg text-slate-800">
+            <p className="mt-5 text-base sm:text-lg  text-slate-800 dark:text-slate-300">
               {subtitle}
             </p>
 

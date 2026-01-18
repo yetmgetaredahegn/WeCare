@@ -47,15 +47,19 @@ const Register = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+    <section className="min-h-screen flex items-center justify-center bg-gray-50 text-slate-900
+        dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 px-4">
+      <div className="w-full max-w-md rounded-2xl p-6 shadow-xl dark:shadow-cyan-600/30
+    bg-white dark:bg-slate-900
+    text-slate-900 dark:text-slate-100
+    transition-colors duration-300 ">
 
         {/* Header */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-slate-900">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
             Create your account
           </h1>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
             Register in a few easy steps
           </p>
         </div>
@@ -70,8 +74,8 @@ const Register = () => {
               className={`rounded-xl py-4 text-base font-semibold transition
                 ${
                   role === r
-                    ? "bg-cyan-600 text-white"
-                    : "bg-slate-100 text-slate-700"
+                    ? "bg-cyan-600 text-white dark:bg-cyan-500"
+                    : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-900 dark:border-s-cyan-700"
                 }`}
             >
               {r.charAt(0).toUpperCase() + r.slice(1)}
@@ -95,7 +99,7 @@ const Register = () => {
             required
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+                       focus:ring-2 focus:ring-cyan-200 outline-none dark:placeholder-slate-500 dark:text-slate-100"
           />
 
           <input
@@ -106,7 +110,7 @@ const Register = () => {
             required
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+                       focus:ring-2 focus:ring-cyan-200 outline-none dark:placeholder-slate-500 dark:text-slate-100"
           />
 
           <input
@@ -118,7 +122,7 @@ const Register = () => {
             required
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+                       focus:ring-2 focus:ring-cyan-200 outline-none dark:placeholder-slate-500 dark:text-slate-100"
           />
 
           <input
@@ -130,7 +134,7 @@ const Register = () => {
             required
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+                       focus:ring-2 focus:ring-cyan-200 outline-none dark:placeholder-slate-500 dark:text-slate-100"
           />
 
           <input
@@ -141,14 +145,15 @@ const Register = () => {
             required
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
                        placeholder-slate-400
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+                       focus:ring-2 focus:ring-cyan-200 outline-none dark:placeholder-slate-500 dark:text-slate-100"
           />
 
           {/* CTA */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-4 rounded-xl bg-cyan-600 py-4 text-base font-semibold text-white disabled:opacity-60"
+            className="w-full mt-4 rounded-xl bg-cyan-600 py-4 text-base font-semibold text-white disabled:opacity-60 dark:bg-cyan-500
+                       transition active:scale-95"
           >
             {loading ? "Creating account..." : "Create account"}
           </button>

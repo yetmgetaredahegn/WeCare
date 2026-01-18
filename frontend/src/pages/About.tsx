@@ -4,9 +4,10 @@ const About: React.FC = () => {
   const [expanded, setExpanded] = useState(false); // controls story expansion
 
   return (
-    <section className="relative overflow-hidden bg-slate-50">
+    <section className="relative overflow-hidden bg-gray-50 text-slate-900
+        dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* Soft continuation background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-cyan-50 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-cyan-50  to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 items-center">
@@ -17,7 +18,7 @@ const About: React.FC = () => {
               Our Story
             </span>
 
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-slate-100">
               Healthcare should feel simple, human, and connected
             </h2>
 
@@ -86,12 +87,12 @@ const About: React.FC = () => {
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+                className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-bg-slate-500 p-6 shadow-sm transition hover:shadow-md"
               >
-                <h3 className="font-semibold text-slate-900">
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
                   {item.desc}
                 </p>
               </div>
