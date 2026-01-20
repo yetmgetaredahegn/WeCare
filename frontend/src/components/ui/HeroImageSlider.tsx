@@ -21,7 +21,7 @@ const HeroImageSlider: React.FC<HeroImageSliderProps> = ({
 
   return (
   // 🔹 max-w-sm on mobile, max-w-md on larger screens
-  <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/3] overflow-hidden rounded-xl shadow-2xl">
+  <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/3] overflow-hidden rounded-xl dark:shadow-cyan-700 shadow-2xl">
     {images.map((src, index) => (
       <img
         key={src}

@@ -22,7 +22,7 @@ const About: React.FC = () => {
               Healthcare should feel simple, human, and connected
             </h2>
 
-            <p className="text-lg leading-relaxed text-slate-700 max-w-xl">
+            <p className="text-lg leading-relaxed dark:text-slate-300 text-slate-700 max-w-xl">
               WeCare was created to remove friction between patients and
               healthcare providers. From appointments to prescriptions,
               everything is designed to be clear, secure, and accessible.
@@ -66,7 +66,7 @@ const About: React.FC = () => {
           </div>
 
           {/* Feature Highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 dark:outline-none dark:ring-0 dark:border-b-cyan-800">
             {[
               {
                 title: "Patient-Centered",
@@ -87,7 +87,7 @@ const About: React.FC = () => {
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-bg-slate-500 p-6 shadow-sm transition hover:shadow-md"
+                className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-b-cyan-800  p-6 shadow-sm dark:shadow-cyan-700 transition hover:shadow-md"
               >
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100">
                   {item.title}
