@@ -1,29 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../components/ui/AuthContext.tsx";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // <-- get login function from context
 
-  // 1️⃣ Local state for form inputs
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // 2️⃣ UI state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // 3️⃣ Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // 4️⃣ Handle form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -35,16 +30,13 @@ const Login = () => {
         formData
       );
 
-      // 5️⃣ Extract tokens
       const { access, refresh } = response.data;
 
-      // 6️⃣ Store tokens (temporary solution)
-      localStorage.setItem("access_token", access);
-      localStorage.setItem("refresh_token", refresh);
+      // ✅ Update global auth state instead of localStorage directly
+      login(access, refresh);
 
-      // 7️⃣ Redirect user after login
-      navigate("/"); 
-
+      // redirect after login
+      navigate("/");
     } catch (err: any) {
       setError("Invalid email or password");
     } finally {
@@ -56,9 +48,9 @@ const Login = () => {
     <section className="min-h-screen flex items-center justify-center bg-gray-50 text-slate-900
         dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 px-4">
       <div className="w-full max-w-md rounded-2xl p-6 shadow-xl dark:shadow-cyan-600/30
-    bg-white dark:bg-slate-900
-    text-slate-900 dark:text-slate-100
-    transition-colors duration-300 ">
+        bg-white dark:bg-slate-900
+        text-slate-900 dark:text-slate-100
+        transition-colors duration-300">
 
         {/* Header */}
         <div className="mb-8 text-center">
@@ -72,14 +64,11 @@ const Login = () => {
 
         {/* Error */}
         {error && (
-          <p className="mb-4 text-sm text-red-600 text-center">
-            {error}
-          </p>
+          <p className="mb-4 text-sm text-red-600 text-center">{error}</p>
         )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5 outline-none">
-
           <input
             type="email"
             name="email"
@@ -88,8 +77,8 @@ const Login = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
-                       placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+              placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100 dark:focus:bg-slate-800
+              focus:ring-2 focus:ring-cyan-200 outline-none"
           />
 
           <input
@@ -100,8 +89,8 @@ const Login = () => {
             value={formData.password}
             onChange={handleChange}
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
-                       placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100
-                       focus:ring-2 focus:ring-cyan-200 outline-none"
+              placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100
+              focus:ring-2 focus:ring-cyan-200 outline-none"
           />
 
           <div className="flex justify-end">
@@ -114,7 +103,7 @@ const Login = () => {
             type="submit"
             disabled={loading}
             className="w-full rounded-xl bg-cyan-600 py-4 text-base font-semibold text-white
-                       transition active:scale-95 disabled:opacity-50"
+              transition active:scale-95 disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>
@@ -126,7 +115,6 @@ const Login = () => {
             Create an account
           </Link>
         </p>
-
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ const About: React.FC = () => {
 
             {/* EXPANDABLE CONTENT */}
             {expanded && (
-              <div className="space-y-4 text-slate-600 max-w-xl">
+              <div className="space-y-4 dark:text-slate-300 text-slate-600 max-w-xl">
                 <p>
                   Many healthcare systems fail not because of lack of features,
                   but because they ignore real workflows. WeCare focuses on
