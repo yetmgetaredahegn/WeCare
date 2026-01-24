@@ -1,10 +1,15 @@
-import { Link, NavLink } from "react-router-dom"
-import { useState } from "react"
-import { Menu, Moon, Sun, X } from "lucide-react"
-import { useTheme } from "../ThemeContext"
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
+import { useAuth } from "@/context/AuthContext";
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const { isDark, toggleTheme } = useTheme();
+  const { isAuthenticated, logout } = useAuth();
 
   const links = [
     { to: "/", label: "Home" },
@@ -12,93 +17,119 @@ const NavBar = () => {
     { to: "/clinical", label: "Clinical" },
     { to: "/users", label: "Users" },
     { to: "/about", label: "About" },
-  ]
+  ];
 
-  const { isDark, toggleTheme } = useTheme();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 shadow-md dark:bg-gray-800 transition-colors">
-  <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 dark:bg-gray-900 shadow-md transition-colors">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
 
-    {/* LEFT: LOGO */}
-    <Link
-      to="/"
-      className="flex items-baseline gap-1 text-lg font-semibold text-green-600"
-    >
-      We
-      <span className="text-4xl text-cyan-600">Care</span>
-    </Link>
+        {/* LOGO */}
+        <Link to="/" className="flex items-baseline gap-1 text-lg font-semibold text-green-600">
+          We <span className="text-4xl text-cyan-600">Care</span>
+        </Link>
 
-    {/* CENTER: DESKTOP LINKS */}
-    <div className="hidden md:flex items-center gap-6 ">
-      {links.map(({ to, label }) => (
-        <NavLink
-          key={to}
-          to={to}
-          className={({ isActive }) =>
-            `rounded-lg px-3 py-1 text-base font-medium transition ${
-              isActive
-                ? "text-slate-900 font-semibold dark:text-white"
-                : "text-slate-700 hover:text-slate-900 dark:text-slate-300"
-            }`
-          }
+        {/* DESKTOP LINKS */}
+        <div className="hidden md:flex items-center gap-6">
+          {links.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `px-3 py-1 transition ${
+                  isActive
+                    ? "text-cyan-600 font-semibold"
+                    : "text-slate-700 dark:text-slate-300"
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+
+          {/* AUTH ACTIONS */}
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600"
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className="px-4 py-2 rounded-lg bg-cyan-600 text-white"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="px-4 py-2 rounded-lg border border-cyan-600 text-cyan-600"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
+        </div>
+
+        {/* THEME TOGGLE */}
+        <button
+          onClick={toggleTheme}
+          className="ml-4 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800"
         >
-          {label}
-        </NavLink>
-      ))}
-    </div>
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
 
-    {/* RIGHT: ACTIONS */}
-    <div className="flex items-center gap-3">
-
-      {/* THEME TOGGLE */}
-      <button
-        onClick={toggleTheme}
-        className="rounded-lg p-2 text-slate-700 hover:bg-gray-200 
-                   dark:text-slate-300 dark:hover:bg-slate-700 transition"
-        aria-label="Toggle theme"
-      >
-        {isDark ? <Sun size={20} /> : <Moon size={20} />}
-      </button>
-
-      {/* HAMBURGER (mobile only) */}
-      <button
-        className="md:hidden rounded-lg p-2 text-slate-800 
-                   hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700"
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
-      >
-        {open ? <X size={24} /> : <Menu size={24} />}
-      </button>
-    </div>
-  </div>
-
-  {/* MOBILE MENU */}
-  {open && (
-    <div className="md:hidden bg-gray-50 dark:bg-gray-800 border-t dark:border-gray-700">
-      <div className="flex flex-col gap-2 px-6 py-4">
-        {links.map(({ to, label }) => (
-          <NavLink
-            key={to}
-            to={to}
-            onClick={() => setOpen(false)}
-            className={({ isActive }) =>
-              `rounded-lg px-4 py-2 text-base transition ${
-                isActive
-                  ? "bg-cyan-100 text-cyan-700 dark:bg-cyan-900 dark:text-cyan-200 font-semibold"
-                  : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-              }`
-            }
-          >
-            {label}
-          </NavLink>
-        ))}
+        {/* MOBILE MENU BUTTON */}
+        <button
+          className="md:hidden rounded-lg p-2"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
-    </div>
-  )}
-</nav>
 
-  )
-}
+      {/* MOBILE MENU */}
+      {open && (
+        <div className="md:hidden bg-gray-50 dark:bg-gray-900 border-t">
+          <div className="flex flex-col gap-3 px-6 py-4">
+            {links.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                onClick={() => setOpen(false)}
+                className="px-4 py-2"
+              >
+                {label}
+              </NavLink>
+            ))}
 
-export default NavBar
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setOpen(false);
+                }}
+                className="px-4 py-2 rounded-lg bg-red-500 text-white"
+              >
+                Logout
+              </button>
+            ) : (
+              <>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/register">Register</NavLink>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default NavBar;

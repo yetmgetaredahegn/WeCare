@@ -7,11 +7,12 @@ import Users from "./pages/Users"
 import Login from "./pages/Login"
 import About from "./pages/About"
 import Register from "./pages/Register"
+import ProtectedRoute from "./components/ui/auth/ProtectedRoute"
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: App,
+    element: <App />,
     children: [
       {
         index: true,
@@ -19,27 +20,27 @@ export const router = createBrowserRouter([
       },
       {
         path: '/scheduling',
-        Component: Scheduling
+        element: <ProtectedRoute><Scheduling /></ProtectedRoute>
       },
       {
         path: '/clinical',
-        Component: Clinical
+        element: <ProtectedRoute><Clinical /></ProtectedRoute>
       },
       {
         path: '/users',
-        Component: Users
+        element: <ProtectedRoute><Users /></ProtectedRoute>
       },
       {
         path: '/login',
-        Component: Login
+        element: <Login />
       },
       {
         path: '/register',
-        Component: Register,
+        element: <Register />
       },
       {
         path: '/about',
-        Component: About
+        element: <About />
       }
     ],
   },
