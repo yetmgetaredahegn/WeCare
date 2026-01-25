@@ -3,13 +3,17 @@ import { useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useAuth } from "@/context/AuthContext";
+import { useMe } from "@/features/auth/queries";
+import { useQueryClient } from "@tanstack/react-query";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { isDark, toggleTheme } = useTheme();
   const { isAuthenticated, logout } = useAuth();
+  const { data: user, isLoading } = useMe();
 
   const links = [
     { to: "/", label: "Home" },
@@ -21,6 +25,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     logout();
+    queryClient.clear();
     navigate("/login");
   };
 
@@ -40,10 +45,9 @@ const NavBar = () => {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `px-3 py-1 transition ${
-                  isActive
-                    ? "text-cyan-600 font-semibold"
-                    : "text-slate-700 dark:text-slate-300"
+                `px-3 py-1 transition ${isActive
+                  ? "text-cyan-600 font-semibold"
+                  : "text-slate-700 dark:text-slate-300"
                 }`
               }
             >
@@ -53,28 +57,33 @@ const NavBar = () => {
 
           {/* AUTH ACTIONS */}
           {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600"
-            >
-              Logout
-            </button>
+            <div className="flex items-center gap-4">
+              {isLoading ? (
+                <span className="text-sm text-slate-500">Loading…</span>
+              ) : (
+                <span className="text-sm font-medium">
+                  {user?.first_name || user?.email}
+                </span>
+              )}
+
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 rounded-lg bg-red-500 text-white"
+              >
+                Logout
+              </button>
+            </div>
           ) : (
             <>
-              <NavLink
-                to="/login"
-                className="px-4 py-2 rounded-lg bg-cyan-600 text-white"
-              >
+              <NavLink to="/login" className="px-4 py-2 bg-cyan-600 text-white">
                 Login
               </NavLink>
-              <NavLink
-                to="/register"
-                className="px-4 py-2 rounded-lg border border-cyan-600 text-cyan-600"
-              >
+              <NavLink to="/register" className="px-4 py-2 border border-cyan-600 text-cyan-600">
                 Register
               </NavLink>
             </>
           )}
+
         </div>
 
         {/* THEME TOGGLE */}
