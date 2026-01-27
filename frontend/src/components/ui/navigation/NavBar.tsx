@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Settings } from "lucide-react";
 import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useAuth } from "@/context/AuthContext";
@@ -23,6 +24,11 @@ const NavBar = () => {
     { to: "/users", label: "Users" },
     { to: "/about", label: "About" },
   ];
+
+  // Keep a mobile-only profile link so users can reach their profile without the desktop dropdown
+  const mobileLinks = isAuthenticated
+    ? [...links, { to: "/profile", label: "Profile" }]
+    : links;
 
   const handleLogout = () => {
     logout();
@@ -132,7 +138,7 @@ const NavBar = () => {
       {open && (
         <div className="md:hidden bg-gray-50 dark:bg-gray-900 border-t">
           <div className="flex flex-col gap-3 px-6 py-4">
-            {links.map(({ to, label }) => (
+            {mobileLinks.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
@@ -144,15 +150,24 @@ const NavBar = () => {
             ))}
 
             {isAuthenticated ? (
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setOpen(false);
-                }}
-                className="px-4 py-2 rounded-lg bg-red-500 text-white"
-              >
-                Logout
-              </button>
+              <>
+                <button
+                  onClick={toggleTheme}
+                  className="flex px-4 py-2 items-center gap-1.5 rounded-lg border border-slate-600 text-cyan-600"
+                >
+                  {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                  {isDark ? "Light mode" : "Dark mode"}
+                </button>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setOpen(false);
+                  }}
+                  className="px-4 py-2 rounded-lg bg-red-500 text-white"
+                >
+                  Logout
+                </button>
+              </>
             ) : (
               <>
                 <NavLink className='flex flex-col gap-3 px-6 py-4' to="/login">Login</NavLink>

@@ -8,6 +8,7 @@ import Login from "./pages/Login"
 import About from "./pages/About"
 import Register from "./pages/Register"
 import ProtectedRoute from "./components/ui/auth/ProtectedRoute"
+import Profile from "./pages/Profile"
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />
+      },
+      {
+        path: '/profile',
+        element: <ProtectedRoute><Profile /></ProtectedRoute>
       }
     ],
   },
