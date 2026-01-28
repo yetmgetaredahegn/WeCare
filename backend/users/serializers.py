@@ -46,6 +46,22 @@ class UserCreatePasswordRetypeSerializer(BaseUserCreateSerializer):
             DoctorProfile.objects.create(user=user)
 
         return user
+
+
+class UserMeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'email',
+            'first_name',
+            'last_name',
+            'is_doctor',
+            'is_patient',
+            'is_staff',
+            'is_superuser',
+            'is_active',
+        )
         
 class DaySerializer(serializers.ModelSerializer):
     class Meta:
