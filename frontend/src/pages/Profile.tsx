@@ -1,9 +1,9 @@
-import { useMe } from "@/features/auth/queries";
+import { useAuth } from "@/context/AuthContext";
 
 const Profile = () => {
-    const { data: user, isLoading } = useMe();
+    const { user, isUserLoading } = useAuth();
 
-    if (isLoading) {
+    if (isUserLoading) {
         return (
             <div className="flex justify-center px-4 sm:px-6">
                 <p className="mt-16 text-gray-500 dark:text-slate-400">Loading profile...</p>
@@ -38,6 +38,13 @@ const Profile = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                         <span className="text-slate-500 dark:text-slate-400">Email</span>
                         <span className="font-medium text-slate-900 dark:text-slate-100 break-words">{user.email}</span>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <span className="text-slate-500 dark:text-slate-400">Role</span>
+                        <span className="font-medium text-slate-900 dark:text-slate-100">
+                            {user.role ?? "Unknown"}
+                        </span>
                     </div>
                 </div>
             </div>

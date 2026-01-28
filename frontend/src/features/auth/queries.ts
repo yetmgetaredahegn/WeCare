@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMe } from "./api";
+import { deriveRole, fetchMe } from "./api";
 import { useAuth } from "@/context/AuthContext";
 
 export const useMe = () => {
@@ -9,5 +9,9 @@ export const useMe = () => {
     queryKey: ["me"],
     queryFn: fetchMe,
     enabled: isAuthenticated, // CRITICAL
+    select: (user) => ({
+      ...user,
+      role: deriveRole(user),
+    }),
   });
 };

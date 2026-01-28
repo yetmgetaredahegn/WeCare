@@ -1,9 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { deriveRole, fetchMe, type UserWithRole } from "@/features/auth/api";
 
 type AuthContextType = {
   accessToken: string | null;
   refreshToken: string | null;
   isAuthenticated: boolean;
+  user: UserWithRole | null;
+  role: UserWithRole["role"];
+  isUserLoading: boolean;
   login: (access: string, refresh: string) => void;
   logout: () => void;
 };
@@ -39,12 +44,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setRefreshToken(null);
   };
 
+  const { data: meData, isLoading: isUserLoading } = useQuery({
+    queryKey: ["me"],
+    queryFn: fetchMe,
+    enabled: !!accessToken,
+  });
+
+  const user: UserWithRole | null = accessToken && meData
+    ? { ...meData, role: deriveRole(meData) }
+    : null;
+
   return (
     <AuthContext
       value={{
         accessToken,
         refreshToken,
         isAuthenticated: !!accessToken,
+        user,
+        role: user?.role ?? null,
+        isUserLoading,
         login,
         logout,
       }}
