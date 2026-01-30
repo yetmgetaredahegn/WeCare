@@ -47,7 +47,10 @@ class UserCreatePasswordRetypeSerializer(BaseUserCreateSerializer):
             raise serializers.ValidationError({"detail": str(e)})
 
         if user.is_patient:
-            PatientProfile.objects.create(user=user)
+            PatientProfile.objects.create(
+                user=user,
+                full_name=f"{user.first_name} {user.last_name}".strip(),
+            )
 
         if user.is_doctor:
             DoctorProfile.objects.create(user=user)
@@ -101,6 +104,18 @@ class PatientProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = PatientProfile
         fields = ['id','user_id','age','phone']
+
+
+class DoctorPatientSummarySerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(source='user.email', read_only=True)
+    full_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PatientProfile
+        fields = ['id', 'full_name', 'gender', 'email']
+
+    def get_full_name(self, obj):
+        return obj.user.get_full_name()
 
 
 class UpdatePatientProfileSerializer(serializers.ModelSerializer):

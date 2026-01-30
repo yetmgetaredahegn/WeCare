@@ -36,12 +36,15 @@ class DoctorProfile(models.Model):
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(common.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=255, blank=True, default="")
     age = models.IntegerField(null=True,blank=True)
     gender = models.CharField(max_length=255,blank=True)
     phone = models.CharField(max_length=15,blank=True)
 
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.get_full_name() or self.full_name
+    
+    
 
 
 
