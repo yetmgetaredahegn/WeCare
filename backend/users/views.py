@@ -30,7 +30,11 @@ class PatientProfileViewSet(ModelViewSet):
             serializer = PatientProfileSerializer(patient)
             return Response(serializer.data)
         elif request.method in ['PUT','PATCH']:
-            serializer = UpdatePatientProfileSerializer(patient,data=request.data)
+            serializer = UpdatePatientProfileSerializer(
+                patient,
+                data=request.data,
+                partial=request.method == 'PATCH'
+            )
             serializer.is_valid(raise_exception=True)
             serializer.save()
             status_code = 201 if created else 200
@@ -64,7 +68,11 @@ class DoctorProfileViewSet(ModelViewSet):
             serializer = DoctorProfileSerializer(doctor)
             return Response(serializer.data)
         elif request.method in ['PUT','PATCH']:
-            serializer = UpdateDoctorProfileSerializer(doctor,data=request.data)
+            serializer = UpdateDoctorProfileSerializer(
+                doctor,
+                data=request.data,
+                partial=request.method == 'PATCH'
+            )
             serializer.is_valid(raise_exception=True)
             serializer.save()
             status_code = 201 if created else 200

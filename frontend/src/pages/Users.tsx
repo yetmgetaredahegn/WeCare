@@ -1,13 +1,6 @@
-import { useEffect, useState, type SetStateAction } from "react"
-import axios from "axios"
 import { useAuth } from "@/context/AuthContext"
 import PatientUser from "./PatientUser"
 import DoctorUser from "./DoctorUser"
-
-interface User {
-  doctor: string
-  patient: string
-}
 
 const Users = () => {
   // const [users, setUsers] = useState<User | null>(null)
@@ -36,7 +29,15 @@ const Users = () => {
   // if (error) {
   //   return <p className="text-center text-red-500">{error}</p>
   // }
-  const {role} = useAuth();
+  const { role } = useAuth();
+  if (!role) {
+    return (
+      <div className="flex justify-center px-4 sm:px-6">
+        <p className="mt-16 text-gray-500 dark:text-slate-400">Loading user experience...</p>
+      </div>
+    );
+  }
+
   return (
     role === "patient" ? <PatientUser /> : <DoctorUser />
     // <section className="mx-auto max-w-6xl px-6 py-10">

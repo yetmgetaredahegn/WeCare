@@ -9,6 +9,7 @@ type AuthContextType = {
   user: UserWithRole | null;
   role: UserWithRole["role"];
   isUserLoading: boolean;
+  refreshUser: () => void;
   login: (access: string, refresh: string) => void;
   logout: () => void;
 };
@@ -44,7 +45,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setRefreshToken(null);
   };
 
-  const { data: meData, isLoading: isUserLoading } = useQuery({
+  const { data: meData, isLoading: isUserLoading, refetch: refetchMe } = useQuery({
     queryKey: ["me"],
     queryFn: fetchMe,
     enabled: !!accessToken,
@@ -63,6 +64,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         user,
         role: user?.role ?? null,
         isUserLoading,
+        refreshUser: () => {
+          void refetchMe();
+        },
         login,
         logout,
       }}

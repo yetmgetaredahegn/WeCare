@@ -8,6 +8,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     is_patient = models.BooleanField(default=False)
     is_doctor = models.BooleanField(default=False)
