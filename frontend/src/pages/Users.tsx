@@ -1,5 +1,8 @@
 import { useEffect, useState, type SetStateAction } from "react"
 import axios from "axios"
+import { useAuth } from "@/context/AuthContext"
+import PatientUser from "./PatientUser"
+import DoctorUser from "./DoctorUser"
 
 interface User {
   doctor: string
@@ -33,27 +36,28 @@ const Users = () => {
   // if (error) {
   //   return <p className="text-center text-red-500">{error}</p>
   // }
-
+  const {role} = useAuth();
   return (
-    <section className="mx-auto max-w-6xl px-6 py-10">
-      {/* Page header */}
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-          Users
-        </h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-300">
-          Manage your users and their information.
-        </p>
-      </header>
+    role === "patient" ? <PatientUser /> : <DoctorUser />
+    // <section className="mx-auto max-w-6xl px-6 py-10">
+    //   {/* Page header */}
+    //   <header className="mb-8">
+    //     <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+    //       Users
+    //     </h1>
+    //     <p className="mt-2 text-slate-600 dark:text-slate-300">
+    //       Manage your users and their information.
+    //     </p>
+    //   </header>
 
-      {/* Main content placeholder */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm
-                      dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-300">
-          User management features will appear here.
-        </p>
-      </div>
-    </section>
+    //   {/* Main content placeholder */}
+    //   <div className="rounded-xl border bg-white p-6 shadow-sm
+    //                   dark:border-slate-800 dark:bg-slate-900">
+    //     <p className="text-slate-600 dark:text-slate-300">
+    //       User management features will appear here.
+    //     </p>
+    //   </div>
+    // </section>
   )
 }
 

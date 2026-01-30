@@ -8,10 +8,14 @@ export const useMe = () => {
   return useQuery({
     queryKey: ["me"],
     queryFn: fetchMe,
-    enabled: isAuthenticated, // CRITICAL
+    enabled: isAuthenticated, 
     select: (user) => ({
       ...user,
       role: deriveRole(user),
     }),
   });
 };
+
+
+
+

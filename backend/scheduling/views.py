@@ -7,6 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from scheduling.filters import AppointmentFilter
 from scheduling.models import Appointment
 from scheduling.serializers import AppointmentSerializer, CreateAppointmentSerializer, UpdateAppointmentSerializer
+from config.pagination import StandardResultsSetPagination
 
 
 # Create your views here.
@@ -15,6 +16,7 @@ class AppointmentViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     filter_backends=[DjangoFilterBackend]
     filterset_class = AppointmentFilter
+    pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
         user = self.request.user

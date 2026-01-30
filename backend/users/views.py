@@ -10,6 +10,7 @@ from users.filters import AvailableDoctors
 from users.models import DoctorProfile, PatientProfile
 from users.permissions import IsPatientPermission,IsDoctorPermission
 from users.serializers import DoctorProfileSerializer, PatientProfileSerializer, UpdateDoctorProfileSerializer, UpdatePatientProfileSerializer
+from config.pagination import StandardResultsSetPagination
 
 
  
@@ -43,6 +44,7 @@ class DoctorProfileViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
     filter_backends = [DjangoFilterBackend]
     filterset_class = AvailableDoctors
+    pagination_class = StandardResultsSetPagination
     # def get_permissions(self):
     #     if self.request.method == 'DELETE':
     #         return IsAdminUser
@@ -72,6 +74,11 @@ class DoctorProfileViewSet(ModelViewSet):
     @action(detail=False, methods=['GET'], permission_classes=[IsAuthenticated])
     def list_of_doctors(self,request):
         filtered_qs = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(filtered_qs)
+        if page is not None:
+            serializer = DoctorProfileSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
         serializer = DoctorProfileSerializer(filtered_qs, many=True)
         return Response(serializer.data)
      

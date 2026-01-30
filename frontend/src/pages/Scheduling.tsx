@@ -1,27 +1,28 @@
-import React from "react";
-import ProtectedNotice from "@/components/ui/ProtectedNotice";
+import { useAuth } from "@/context/AuthContext";
+import PatientScheduling from "./PatientScheduling";
+import DoctorScheduling from "./DoctorScheduling";
 
 const Scheduling = () => {
-  return (
-    <section className="mx-auto max-w-6xl px-6 py-10">
-      {/* Page header */}
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-          Appointment Scheduling
-        </h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-300">
-          Manage your upcoming appointments and schedule new visits.
-        </p>
-      </header>
+  const { role, isUserLoading } = useAuth();
 
-      {/* Main content placeholder */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm
-                      dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-300">
-          Scheduling features will appear here.
-        </p>
-      </div>
-    </section>
+  if (isUserLoading) {
+    return (
+      <section className="mx-auto max-w-4xl px-6 py-20 text-center text-slate-600 dark:text-slate-300">
+        Loading scheduling details...
+      </section>
+    );
+  }
+
+  if (!role) {
+    return (
+      <section className="mx-auto max-w-4xl px-6 py-20 text-center text-slate-600 dark:text-slate-300">
+        We could not determine your role. Please update your profile.
+      </section>
+    );
+  }
+
+  return (
+    role === "patient" ? <PatientScheduling /> : <DoctorScheduling />
   );
 };
 
