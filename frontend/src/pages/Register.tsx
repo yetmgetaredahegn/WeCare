@@ -72,10 +72,9 @@ const Register = () => {
               type="button"
               onClick={() => setRole(r as "patient" | "doctor")}
               className={`rounded-xl py-4 text-base font-semibold transition
-                ${
-                  role === r
-                    ? "bg-cyan-600 text-white dark:bg-cyan-500"
-                    : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-900 dark:border-s-cyan-700"
+                ${role === r
+                  ? "bg-cyan-600 text-white dark:bg-cyan-500"
+                  : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-900 dark:border-s-cyan-700"
                 }`}
             >
               {r.charAt(0).toUpperCase() + r.slice(1)}
