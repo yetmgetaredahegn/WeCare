@@ -19,12 +19,39 @@ from users.serializers import DoctorPatientSummarySerializer
 # Create your views here.
 
 @extend_schema_view(
-    list=extend_schema(summary='List appointments', tags=['Scheduling']),
-    retrieve=extend_schema(summary='Retrieve an appointment', tags=['Scheduling']),
-    create=extend_schema(summary='Create an appointment', tags=['Scheduling']),
-    update=extend_schema(summary='Update an appointment', tags=['Scheduling']),
-    partial_update=extend_schema(summary='Partially update an appointment', tags=['Scheduling']),
-    destroy=extend_schema(summary='Delete an appointment', tags=['Scheduling']),
+    list=extend_schema(
+        summary='List appointments',
+        tags=['Scheduling'],
+        responses=AppointmentSerializer(many=True),
+    ),
+    retrieve=extend_schema(
+        summary='Retrieve an appointment',
+        tags=['Scheduling'],
+        responses=AppointmentSerializer,
+    ),
+    create=extend_schema(
+        summary='Create an appointment',
+        tags=['Scheduling'],
+        request=CreateAppointmentSerializer,
+        responses=AppointmentSerializer,
+    ),
+    update=extend_schema(
+        summary='Update an appointment',
+        tags=['Scheduling'],
+        request=UpdateAppointmentSerializer,
+        responses=AppointmentSerializer,
+    ),
+    partial_update=extend_schema(
+        summary='Partially update an appointment',
+        tags=['Scheduling'],
+        request=UpdateAppointmentSerializer,
+        responses=AppointmentSerializer,
+    ),
+    destroy=extend_schema(
+        summary='Delete an appointment',
+        tags=['Scheduling'],
+        responses={204: None},
+    ),
 )
 class AppointmentViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -52,6 +79,7 @@ class AppointmentViewSet(ModelViewSet):
     @extend_schema(
         summary='List patients for a doctor',
         tags=['Scheduling'],
+        responses=DoctorPatientSummarySerializer(many=True),
         parameters=[
             OpenApiParameter(
                 name='order',

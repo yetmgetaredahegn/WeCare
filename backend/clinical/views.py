@@ -11,8 +11,16 @@ from users.permissions import IsDoctorPermission
 # Create your views here.
 
 @extend_schema_view(
-    list=extend_schema(summary='List diagnoses', tags=['Clinical']),
-    retrieve=extend_schema(summary='Retrieve a diagnosis', tags=['Clinical']),
+    list=extend_schema(
+        summary='List diagnoses',
+        tags=['Clinical'],
+        responses=DiagnosisSerializer(many=True),
+    ),
+    retrieve=extend_schema(
+        summary='Retrieve a diagnosis',
+        tags=['Clinical'],
+        responses=DiagnosisSerializer,
+    ),
 )
 class DiagnosesViewSet(RetrieveModelMixin, ListModelMixin,GenericViewSet):
     queryset = Diagnosis.objects.all()
@@ -21,9 +29,22 @@ class DiagnosesViewSet(RetrieveModelMixin, ListModelMixin,GenericViewSet):
     
 
 @extend_schema_view(
-    list=extend_schema(summary='List medical records', tags=['Clinical']),
-    retrieve=extend_schema(summary='Retrieve a medical record', tags=['Clinical']),
-    create=extend_schema(summary='Create a medical record', tags=['Clinical']),
+    list=extend_schema(
+        summary='List medical records',
+        tags=['Clinical'],
+        responses=MedicalRecordsSerializer(many=True),
+    ),
+    retrieve=extend_schema(
+        summary='Retrieve a medical record',
+        tags=['Clinical'],
+        responses=MedicalRecordsSerializer,
+    ),
+    create=extend_schema(
+        summary='Create a medical record',
+        tags=['Clinical'],
+        request=CreateMedicalRecordsSerializer,
+        responses=MedicalRecordsSerializer,
+    ),
 )
 class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,GenericViewSet):
     # queryset = MedicalRecord.objects.all()
@@ -50,8 +71,17 @@ class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,Ge
     
 
 @extend_schema_view(
-    list=extend_schema(summary='List prescriptions', tags=['Clinical']),
-    create=extend_schema(summary='Create a prescription', tags=['Clinical']),
+    list=extend_schema(
+        summary='List prescriptions',
+        tags=['Clinical'],
+        responses=PrescriptionSerializer(many=True),
+    ),
+    create=extend_schema(
+        summary='Create a prescription',
+        tags=['Clinical'],
+        request=PrescriptionSerializer,
+        responses=PrescriptionSerializer,
+    ),
 )
 class PrescriptionViewSet(CreateModelMixin,ListModelMixin,GenericViewSet):
     queryset = Prescription.objects.all()

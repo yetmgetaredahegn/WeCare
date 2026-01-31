@@ -16,19 +16,51 @@ from config.pagination import StandardResultsSetPagination
 
  
 @extend_schema_view(
-    list=extend_schema(summary='List patient profiles', tags=['Users']),
-    retrieve=extend_schema(summary='Retrieve a patient profile', tags=['Users']),
-    create=extend_schema(summary='Create a patient profile', tags=['Users']),
-    update=extend_schema(summary='Update a patient profile', tags=['Users']),
-    partial_update=extend_schema(summary='Partially update a patient profile', tags=['Users']),
-    destroy=extend_schema(summary='Delete a patient profile', tags=['Users']),
+    list=extend_schema(
+        summary='List patient profiles',
+        tags=['Users'],
+        responses=PatientProfileSerializer(many=True),
+    ),
+    retrieve=extend_schema(
+        summary='Retrieve a patient profile',
+        tags=['Users'],
+        responses=PatientProfileSerializer,
+    ),
+    create=extend_schema(
+        summary='Create a patient profile',
+        tags=['Users'],
+        request=PatientProfileSerializer,
+        responses=PatientProfileSerializer,
+    ),
+    update=extend_schema(
+        summary='Update a patient profile',
+        tags=['Users'],
+        request=UpdatePatientProfileSerializer,
+        responses=PatientProfileSerializer,
+    ),
+    partial_update=extend_schema(
+        summary='Partially update a patient profile',
+        tags=['Users'],
+        request=UpdatePatientProfileSerializer,
+        responses=PatientProfileSerializer,
+    ),
+    destroy=extend_schema(
+        summary='Delete a patient profile',
+        tags=['Users'],
+        responses={204: None},
+    ),
 )
 class PatientProfileViewSet(ModelViewSet):
     queryset = PatientProfile.objects.all()
     serializer_class = PatientProfileSerializer
     permission_classes = [IsAdminUser]
 
-    @extend_schema(summary='Get or update patient profile', tags=['Users'])
+    @extend_schema(
+        summary='Get or update patient profile',
+        tags=['Users'],
+        request=UpdatePatientProfileSerializer,
+        responses=PatientProfileSerializer,
+    )
     @action(detail=False, methods=['GET','PUT','PATCH'], permission_classes=[IsPatientPermission])
     def profile(self,request):
         patient, created = PatientProfile.objects.get_or_create(
@@ -53,12 +85,39 @@ class PatientProfileViewSet(ModelViewSet):
 
 
 @extend_schema_view(
-    list=extend_schema(summary='List doctor profiles', tags=['Users']),
-    retrieve=extend_schema(summary='Retrieve a doctor profile', tags=['Users']),
-    create=extend_schema(summary='Create a doctor profile', tags=['Users']),
-    update=extend_schema(summary='Update a doctor profile', tags=['Users']),
-    partial_update=extend_schema(summary='Partially update a doctor profile', tags=['Users']),
-    destroy=extend_schema(summary='Delete a doctor profile', tags=['Users']),
+    list=extend_schema(
+        summary='List doctor profiles',
+        tags=['Users'],
+        responses=DoctorProfileSerializer(many=True),
+    ),
+    retrieve=extend_schema(
+        summary='Retrieve a doctor profile',
+        tags=['Users'],
+        responses=DoctorProfileSerializer,
+    ),
+    create=extend_schema(
+        summary='Create a doctor profile',
+        tags=['Users'],
+        request=DoctorProfileSerializer,
+        responses=DoctorProfileSerializer,
+    ),
+    update=extend_schema(
+        summary='Update a doctor profile',
+        tags=['Users'],
+        request=UpdateDoctorProfileSerializer,
+        responses=DoctorProfileSerializer,
+    ),
+    partial_update=extend_schema(
+        summary='Partially update a doctor profile',
+        tags=['Users'],
+        request=UpdateDoctorProfileSerializer,
+        responses=DoctorProfileSerializer,
+    ),
+    destroy=extend_schema(
+        summary='Delete a doctor profile',
+        tags=['Users'],
+        responses={204: None},
+    ),
 )
 class DoctorProfileViewSet(ModelViewSet):
     queryset = DoctorProfile.objects.all()
@@ -72,7 +131,12 @@ class DoctorProfileViewSet(ModelViewSet):
     #         return IsAdminUser
     #     return IsAuthenticated
 
-    @extend_schema(summary='Get or update doctor profile', tags=['Users'])
+    @extend_schema(
+        summary='Get or update doctor profile',
+        tags=['Users'],
+        request=UpdateDoctorProfileSerializer,
+        responses=DoctorProfileSerializer,
+    )
     @action(detail=False, methods=['GET','PUT','PATCH'], permission_classes=[IsDoctorPermission])
     def profile(self,request):
         doctor, created = DoctorProfile.objects.get_or_create(
@@ -98,7 +162,11 @@ class DoctorProfileViewSet(ModelViewSet):
             return Response(serializer.data, status=status_code)  
 
 
-    @extend_schema(summary='List available doctors', tags=['Users'])
+    @extend_schema(
+        summary='List available doctors',
+        tags=['Users'],
+        responses=DoctorProfileSerializer(many=True),
+    )
     @action(detail=False, methods=['GET'], permission_classes=[IsAuthenticated])
     def list_of_doctors(self,request):
         filtered_qs = self.filter_queryset(self.get_queryset())
