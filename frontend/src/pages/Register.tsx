@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "@/lib/api";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -28,7 +28,7 @@ const Register = () => {
     setError(null);
 
     try {
-      await axios.post("http://127.0.0.1:8000/auth/users/", {
+      await api.post("/auth/users/", {
         ...formData,
         is_doctor: role === "doctor",
         is_patient: role === "patient",

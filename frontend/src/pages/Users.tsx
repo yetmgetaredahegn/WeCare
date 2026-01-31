@@ -8,8 +8,8 @@ const Users = () => {
   // const [error, setError] = useState<string | null>(null)
 
   // useEffect(() => {
-  //   axios
-  //     .get<User>("http://127.0.0.1:8000/users/")
+  //   api
+  //     .get<User>("/users/")
   //     .then((response: { data: SetStateAction<User | null> }) => {
   //       setUsers(response.data)
   //     })

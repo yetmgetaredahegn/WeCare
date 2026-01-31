@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "@/lib/api";
 import { useAuth } from "../context/AuthContext.tsx";
 
 const Login = () => {
@@ -25,10 +25,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/auth/jwt/create/",
-        formData
-      );
+      const response = await api.post("/auth/jwt/create/", formData);
 
       const { access, refresh } = response.data;
 
