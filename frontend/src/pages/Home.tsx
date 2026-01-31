@@ -6,7 +6,9 @@ const Home = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user, isUserLoading } = useAuth();
 
-  const displayName = user?.first_name || user?.full_name;
+  const displayName = user
+    ? [user.first_name, user.last_name].filter(Boolean).join(" ")
+    : "";
   const title = isAuthenticated
     ? `Welcome back${displayName ? `, ${displayName}` : ""}`
     : "Welcome to WeCare";

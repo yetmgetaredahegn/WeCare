@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import ProtectedNotice from "@/components/ui/ProtectedNotice";
 import Toast, { useToast } from "@/components/ui/Toast";
@@ -70,8 +70,8 @@ const PatientClinical = () => {
                             type="button"
                             onClick={() => setSelectedRecordId(record.id)}
                             className={`border rounded-lg p-4 text-left transition ${selectedRecordId === record.id
-                                    ? "border-cyan-500 bg-cyan-50 dark:bg-cyan-900"
-                                    : "border-slate-200 hover:border-cyan-200 dark:border-slate-700 dark:hover:border-slate-600"
+                                ? "border-cyan-500 bg-cyan-50 dark:bg-cyan-900"
+                                : "border-slate-200 hover:border-cyan-200 dark:border-slate-700 dark:hover:border-slate-600"
                                 }`}
                         >
                             <div className="flex flex-wrap justify-between gap-2">
