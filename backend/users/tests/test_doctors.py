@@ -19,7 +19,7 @@ class TestDoctorProfileAccess:
         client = authenticate_client(is_patient = True)
         doctor = test_user(is_doctor=True,email="doctor@domain.com")
 
-        response = client.get(f"/users/doctor/{doctor.id}/")
+        response = client.get(f"/users/doctor/{doctor.doctorprofile.id}/")
 
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
@@ -39,3 +39,8 @@ class TestListOfDoctors:
         response = client.get("/users/doctor/list_of_doctors/")
 
         assert response.status_code == status.HTTP_200_OK
+
+    def test_if_unauthenticated_user_access_list_of_doctors_returns_401(self,api_client):
+        response = api_client.get("/users/doctor/list_of_doctors/")
+
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED

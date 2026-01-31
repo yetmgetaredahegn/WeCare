@@ -19,7 +19,7 @@ class TestPatientProfileAccess:
         client = authenticate_client(is_patient=True)
         another_user = test_user(is_patient=True,email="another@domain.com",first_name="another")
 
-        response = client.get(f"/users/patient/{another_user.id}/")
+        response = client.get(f"/users/patient/{another_user.patientprofile.id}/")
 
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
@@ -27,6 +27,6 @@ class TestPatientProfileAccess:
         client  = authenticate_client(is_doctor=True)
         patient = test_user(is_patient=True,email="patient@domain.com")
 
-        response = client.get(f"/users/patient/{patient.id}/")
+        response = client.get(f"/users/patient/{patient.patientprofile.id}/")
 
         assert response.status_code == status.HTTP_403_FORBIDDEN
