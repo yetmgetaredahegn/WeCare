@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'rest_framework',
+    'drf_spectacular',
     'clinical',
-    'homepage',
     'scheduling',
     'users',
 ]
@@ -151,6 +151,26 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'WeCare Digital Health API',
+    'VERSION': '1.0.0 (MVP)',
+    'DESCRIPTION': (
+        'A modular healthcare ecosystem designed to bridge the gap between '
+        'patients and clinics. This API powers role-based access for appointments, '
+        'prescriptions, and medical records with a focus on simplicity, security, '
+        'and predictable developer experience.'
+    ),
+    'CONTACT': {
+        'name': 'Yetmgeta Redahegn',
+        'url': 'https://github.com/yetmgetaredahegn',
+        'email': 'yetmgeta.tech@gmail.com',
+    },
+    'LICENSE': {
+        'name': '© 2026 WeCare Healthcare System. Developed by Yetmgeta Redahegn.',
+    },
 }
 
 SIMPLE_JWT = {

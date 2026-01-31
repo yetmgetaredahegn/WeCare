@@ -77,7 +77,7 @@ const Login = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full rounded-xl border px-4 py-4 text-base text-slate-900
-              placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100 dark:focus:bg-slate-800
+              placeholder-slate-400 dark:placeholder-slate-500 dark:text-slate-100
               focus:ring-2 focus:ring-cyan-200 outline-none"
           />
 

@@ -7,9 +7,10 @@ import { useQueryClient } from "@tanstack/react-query";
 
 type Props = {
   name?: string;
+  avatarUrl?: string | null;
 };
 
-const ProfileDropdown = ({ name }: Props) => {
+const ProfileDropdown = ({ name, avatarUrl }: Props) => {
   const [open, setOpen] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   const { logout } = useAuth();
@@ -29,9 +30,17 @@ const ProfileDropdown = ({ name }: Props) => {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 rounded-full px-3 py-1 hover:bg-gray-200 dark:hover:bg-slate-800"
       >
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-600 text-white text-sm font-semibold">
-          {name?.[0]?.toUpperCase() ?? "U"}
-        </div>
+        {avatarUrl ? (
+          <img
+            src={avatarUrl}
+            alt={name ?? "User avatar"}
+            className="h-8 w-8 rounded-full object-cover"
+          />
+        ) : (
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-600 text-white text-sm font-semibold">
+            {name?.[0]?.toUpperCase() ?? "U"}
+          </div>
+        )}
         <ChevronDown size={16} />
       </button>
 

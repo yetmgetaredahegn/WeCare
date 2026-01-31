@@ -1,11 +1,11 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useAuth } from "@/context/AuthContext";
-import { useMe } from "@/features/auth/queries";
 import { useQueryClient } from "@tanstack/react-query";
 import ProfileDropdown from "../ProfileDropdown";
+import { api } from "@/lib/api";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -13,8 +13,7 @@ const NavBar = () => {
   const queryClient = useQueryClient();
 
   const { isDark, toggleTheme } = useTheme();
-  const { isAuthenticated, logout } = useAuth();
-  const { data: user, isLoading } = useMe();
+  const { isAuthenticated, logout, user, isUserLoading } = useAuth();
 
   const links = [
     { to: "/", label: "Home" },
@@ -34,6 +33,12 @@ const NavBar = () => {
     queryClient.clear();
     navigate("/login");
   };
+
+  const avatarUrl = user?.avatar
+    ? user.avatar.startsWith("http")
+      ? user.avatar
+      : `${api.defaults.baseURL ?? ""}${user.avatar}`
+    : null;
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-gray-50 dark:bg-gray-900 shadow-md transition-colors">
@@ -67,10 +72,11 @@ const NavBar = () => {
           {isAuthenticated ? (
             <ProfileDropdown
               name={
-                isLoading
+                isUserLoading
                   ? "Loading..."
                   : user?.first_name || user?.email
               }
+              avatarUrl={avatarUrl}
             />
           ) : (
             <>

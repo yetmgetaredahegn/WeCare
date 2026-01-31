@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/lib/api";
+import { useQueryClient } from "@tanstack/react-query";
 import {
     fetchDoctorProfile,
     fetchPatientProfile,
@@ -15,6 +16,7 @@ const ALLOWED_AVATAR_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 const Profile = () => {
     const { user, role, isUserLoading, refreshUser } = useAuth();
+    const queryClient = useQueryClient();
     const [profileLoading, setProfileLoading] = useState(false);
     const [profileError, setProfileError] = useState<string | null>(null);
     const [saveError, setSaveError] = useState<string | null>(null);
@@ -153,6 +155,7 @@ const Profile = () => {
 
             await Promise.all(tasks);
             await refreshUser();
+            await queryClient.invalidateQueries({ queryKey: ["me"] });
             setSaveSuccess("Profile updated.");
             setAvatarFile(null);
         } catch (error) {
