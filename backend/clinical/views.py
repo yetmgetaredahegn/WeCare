@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.mixins import CreateModelMixin,RetrieveModelMixin,ListModelMixin
 from rest_framework.viewsets import GenericViewSet
+from drf_spectacular.utils import extend_schema, extend_schema_view
 
 from clinical.models import Diagnosis, Prescription, MedicalRecord
 from clinical.serializers import CreateMedicalRecordsSerializer, DiagnosisSerializer, MedicalRecordsSerializer, PrescriptionSerializer
@@ -9,12 +10,21 @@ from users import permissions
 from users.permissions import IsDoctorPermission
 # Create your views here.
 
+@extend_schema_view(
+    list=extend_schema(summary='List diagnoses', tags=['Clinical']),
+    retrieve=extend_schema(summary='Retrieve a diagnosis', tags=['Clinical']),
+)
 class DiagnosesViewSet(RetrieveModelMixin, ListModelMixin,GenericViewSet):
     queryset = Diagnosis.objects.all()
     serializer_class = DiagnosisSerializer
     permission_classes = [IsDoctorPermission]
     
 
+@extend_schema_view(
+    list=extend_schema(summary='List medical records', tags=['Clinical']),
+    retrieve=extend_schema(summary='Retrieve a medical record', tags=['Clinical']),
+    create=extend_schema(summary='Create a medical record', tags=['Clinical']),
+)
 class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,GenericViewSet):
     # queryset = MedicalRecord.objects.all()
     def get_queryset(self):
@@ -39,6 +49,10 @@ class MedicalRecordViewSet(CreateModelMixin,ListModelMixin,RetrieveModelMixin,Ge
         return [permission() for permission in permission_classes]
     
 
+@extend_schema_view(
+    list=extend_schema(summary='List prescriptions', tags=['Clinical']),
+    create=extend_schema(summary='Create a prescription', tags=['Clinical']),
+)
 class PrescriptionViewSet(CreateModelMixin,ListModelMixin,GenericViewSet):
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer

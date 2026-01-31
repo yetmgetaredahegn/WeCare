@@ -3,6 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.decorators import action
+from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Max
 
@@ -17,6 +18,14 @@ from users.serializers import DoctorPatientSummarySerializer
 
 # Create your views here.
 
+@extend_schema_view(
+    list=extend_schema(summary='List appointments', tags=['Scheduling']),
+    retrieve=extend_schema(summary='Retrieve an appointment', tags=['Scheduling']),
+    create=extend_schema(summary='Create an appointment', tags=['Scheduling']),
+    update=extend_schema(summary='Update an appointment', tags=['Scheduling']),
+    partial_update=extend_schema(summary='Partially update an appointment', tags=['Scheduling']),
+    destroy=extend_schema(summary='Delete an appointment', tags=['Scheduling']),
+)
 class AppointmentViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     filter_backends=[DjangoFilterBackend]
@@ -40,6 +49,18 @@ class AppointmentViewSet(ModelViewSet):
             return UpdateAppointmentSerializer
         return AppointmentSerializer
 
+    @extend_schema(
+        summary='List patients for a doctor',
+        tags=['Scheduling'],
+        parameters=[
+            OpenApiParameter(
+                name='order',
+                description="Sort by 'alpha' (default) or 'recent'",
+                required=False,
+                type=str,
+            ),
+        ],
+    )
     @action(
         detail=False,
         methods=['get'],
