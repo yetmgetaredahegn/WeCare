@@ -144,6 +144,13 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8001',
     "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "https://we-care-ruby.vercel.app"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://we-care-ruby.vercel.app",
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
 ]
 
 
