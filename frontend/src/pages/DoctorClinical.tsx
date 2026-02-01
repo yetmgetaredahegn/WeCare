@@ -202,7 +202,7 @@ const DoctorClinical = () => {
                         }
                         className="border border-slate-200 rounded-md px-3 py-2 text-sm dark:border-slate-700 dark:bg-black dark:text-slate-100"
                     >
-                        <option value="">Select patient</option>
+                        <option className="dark:bg-slate-950" value="">Select patient</option>
                         {isPatientsLoading && <option>Loading patients...</option>}
                         {patients?.map((patient) => (
                             <option key={patient.id} value={patient.id}>
